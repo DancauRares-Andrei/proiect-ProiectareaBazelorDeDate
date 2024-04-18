@@ -4,40 +4,40 @@
 <createdTime>2024-04-18 09:42:39 UTC</createdTime>
 <ownerDesignName>RaresElectronics</ownerDesignName>
 <source>CREATE OR REPLACE PACKAGE nume_producator_pkg AS
-    PROCEDURE inserare_producator(p_id_firma IN nume_producator.id_firma%TYPE, p_nume_firma IN nume_producator.nume_firma%TYPE);
+    PROCEDURE inserare_producator(p_nume_firma IN nume_producator.nume_firma%TYPE);
     
-    PROCEDURE actualizare_producator(p_id_firma IN nume_producator.id_firma%TYPE, p_nume_firma IN nume_producator.nume_firma%TYPE);
+    PROCEDURE actualizare_producator(p_nume_firma IN nume_producator.nume_firma%TYPE,p_nume_nou_firma IN nume_producator.nume_firma%TYPE);
     
-    PROCEDURE stergere_producator(p_id_firma IN nume_producator.id_firma%TYPE);
+    PROCEDURE stergere_producator(p_nume_firma IN nume_producator.nume_firma%TYPE);
     
-    FUNCTION selectare_producator(p_id_firma IN nume_producator.id_firma%TYPE) RETURN nume_producator%ROWTYPE;
+    FUNCTION selectare_producator(p_nume_firma IN nume_producator.nume_firma%TYPE) RETURN nume_producator%ROWTYPE;
     
     FUNCTION selectare_toti_producatorii RETURN SYS_REFCURSOR;
 END nume_producator_pkg;
 /
 CREATE OR REPLACE PACKAGE BODY nume_producator_pkg AS
-    PROCEDURE inserare_producator(p_id_firma IN nume_producator.id_firma%TYPE, p_nume_firma IN nume_producator.nume_firma%TYPE) AS
+    PROCEDURE inserare_producator(p_nume_firma IN nume_producator.nume_firma%TYPE) AS
     BEGIN
-        INSERT INTO nume_producator (id_firma, nume_firma) VALUES (p_id_firma, p_nume_firma);
+        INSERT INTO nume_producator (nume_firma) VALUES (p_nume_firma);
         COMMIT;
     END inserare_producator;
     
-    PROCEDURE actualizare_producator(p_id_firma IN nume_producator.id_firma%TYPE, p_nume_firma IN nume_producator.nume_firma%TYPE) AS
+    PROCEDURE actualizare_producator(p_nume_firma IN nume_producator.nume_firma%TYPE,p_nume_nou_firma IN nume_producator.nume_firma%TYPE) AS
     BEGIN
-        UPDATE nume_producator SET nume_firma = p_nume_firma WHERE id_firma = p_id_firma;
+        UPDATE nume_producator SET nume_firma = p_nume_nou_firma WHERE nume_firma = p_nume_firma;
         COMMIT;
     END actualizare_producator;
     
-    PROCEDURE stergere_producator(p_id_firma IN nume_producator.id_firma%TYPE) AS
+    PROCEDURE stergere_producator(p_nume_firma IN nume_producator.nume_firma%TYPE) AS
     BEGIN
-        DELETE FROM nume_producator WHERE id_firma = p_id_firma;
+        DELETE FROM nume_producator WHERE nume_firma = p_nume_firma;
         COMMIT;
     END stergere_producator;
     
-    FUNCTION selectare_producator(p_id_firma IN nume_producator.id_firma%TYPE) RETURN nume_producator%ROWTYPE AS
+    FUNCTION selectare_producator(p_nume_firma IN nume_producator.nume_firma%TYPE) RETURN nume_producator%ROWTYPE AS
         v_producator nume_producator%ROWTYPE;
     BEGIN
-        SELECT * INTO v_producator FROM nume_producator WHERE id_firma = p_id_firma;
+        SELECT * INTO v_producator FROM nume_producator WHERE nume_firma = p_nume_firma;
         RETURN v_producator;
     END selectare_producator;
     

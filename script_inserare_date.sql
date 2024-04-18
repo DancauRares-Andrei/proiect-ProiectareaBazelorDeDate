@@ -1,0 +1,16 @@
+EXECUTE nume_producator_pkg.inserare_producator('Intel');
+EXECUTE nume_producator_pkg.inserare_producator('Samsung');
+EXECUTE nume_producator_pkg.inserare_producator('Qualcomm');
+EXECUTE nume_producator_pkg.inserare_producator('Texas Instruments');
+EXECUTE nume_producator_pkg.inserare_producator('CapXon');
+EXECUTE stare_produs_pkg.inserare_stare('Nou');
+EXECUTE stare_produs_pkg.inserare_stare('Zgariat');
+EXECUTE stare_produs_pkg.inserare_stare('Folosit');
+EXECUTE stare_produs_pkg.inserare_stare('Defect');
+EXECUTE stare_produs_pkg.inserare_stare('Expirat');
+EXECUTE tip_produs_pkg.inserare_tip_produs('Condensator');
+EXECUTE tip_produs_pkg.inserare_tip_produs('Bobina');
+EXECUTE tip_produs_pkg.inserare_tip_produs('TranzistorBJ');
+EXECUTE tip_produs_pkg.inserare_tip_produs('TranzistorMOS');
+EXECUTE tip_produs_pkg.inserare_tip_produs('Rezistenta');
+EXECUTE tip_produs_pkg.inserare_tip_produs('Dioda');

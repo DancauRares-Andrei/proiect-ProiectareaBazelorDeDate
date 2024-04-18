@@ -5,40 +5,40 @@
 <ownerDesignName>RaresElectronics</ownerDesignName>
 <source>CREATE OR REPLACE PACKAGE stare_produs_pkg AS
     
-    PROCEDURE inserare_stare(p_id_stare IN stare_produs.id_stare%TYPE, p_nume_stare IN stare_produs.nume_stare%TYPE);
+    PROCEDURE inserare_stare(p_nume_stare IN stare_produs.nume_stare%TYPE);
     
-    PROCEDURE actualizare_stare(p_id_stare IN stare_produs.id_stare%TYPE, p_nume_stare IN stare_produs.nume_stare%TYPE);
+    PROCEDURE actualizare_stare(p_nume_stare IN stare_produs.nume_stare%TYPE,p_nume_nou_stare IN stare_produs.nume_stare%TYPE);
     
-    PROCEDURE stergere_stare(p_id_stare IN stare_produs.id_stare%TYPE);
+    PROCEDURE stergere_stare(p_nume_stare IN stare_produs.nume_stare%TYPE);
     
-    FUNCTION selectare_stare(p_id_stare IN stare_produs.id_stare%TYPE) RETURN stare_produs%ROWTYPE;
+    FUNCTION selectare_stare(p_nume_stare IN stare_produs.nume_stare%TYPE) RETURN stare_produs%ROWTYPE;
     
     FUNCTION selectare_toate_starile RETURN SYS_REFCURSOR;
 END stare_produs_pkg;
 /
 CREATE OR REPLACE PACKAGE BODY stare_produs_pkg AS
-    PROCEDURE inserare_stare(p_id_stare IN stare_produs.id_stare%TYPE, p_nume_stare IN stare_produs.nume_stare%TYPE) AS
+    PROCEDURE inserare_stare(p_nume_stare IN stare_produs.nume_stare%TYPE) AS
     BEGIN
-        INSERT INTO stare_produs (id_stare, nume_stare) VALUES (p_id_stare, p_nume_stare);
+        INSERT INTO stare_produs (nume_stare) VALUES (p_nume_stare);
         COMMIT;
     END inserare_stare;
     
-    PROCEDURE actualizare_stare(p_id_stare IN stare_produs.id_stare%TYPE, p_nume_stare IN stare_produs.nume_stare%TYPE) AS
+    PROCEDURE actualizare_stare(p_nume_stare IN stare_produs.nume_stare%TYPE, p_nume_nou_stare IN stare_produs.nume_stare%TYPE) AS
     BEGIN
-        UPDATE stare_produs SET nume_stare = p_nume_stare WHERE id_stare = p_id_stare;
+        UPDATE stare_produs SET nume_stare = p_nume_nou_stare WHERE nume_stare = p_nume_stare;
         COMMIT;
     END actualizare_stare;
     
-    PROCEDURE stergere_stare(p_id_stare IN stare_produs.id_stare%TYPE) AS
+    PROCEDURE stergere_stare(p_nume_stare IN stare_produs.nume_stare%TYPE) AS
     BEGIN
-        DELETE FROM stare_produs WHERE id_stare = p_id_stare;
+        DELETE FROM stare_produs WHERE nume_stare = p_nume_stare;
         COMMIT;
     END stergere_stare;
     
-    FUNCTION selectare_stare(p_id_stare IN stare_produs.id_stare%TYPE) RETURN stare_produs%ROWTYPE AS
+    FUNCTION selectare_stare(p_nume_stare IN stare_produs.nume_stare%TYPE) RETURN stare_produs%ROWTYPE AS
         v_stare stare_produs%ROWTYPE;
     BEGIN
-        SELECT * INTO v_stare FROM stare_produs WHERE id_stare = p_id_stare;
+        SELECT * INTO v_stare FROM stare_produs WHERE nume_stare = p_nume_stare;
         RETURN v_stare;
     END selectare_stare;
     
