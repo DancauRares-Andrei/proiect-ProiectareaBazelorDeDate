@@ -1,0 +1,21 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="leg_stare_produs" directorySegmentName="seg_0" id="2EA2E49D-A862-2FFA-984E-F0D3DFBE3B48">
+<createdBy>student</createdBy>
+<createdTime>2022-10-21 12:13:12 UTC</createdTime>
+<ownerDesignName>RaresElectronics_nou_v2</ownerDesignName>
+<engineerTo>
+<item key="05ED7043-A4EE-528C-DD35-DBFD656AA9D3" value="true"/>
+</engineerTo>
+<sourcePk>19D41DBA-D802-8608-3650-34C49EB12691</sourcePk>
+<identifying>false</identifying>
+<nameOnSource>descrie starea</nameOnSource>
+<nameOnTarget>are starea</nameOnTarget>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>5DEE00B5-A612-6676-A0F7-F270FD77076E</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>CDC4F6E5-DAA1-6B47-FA4D-AB4AE03FC028</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

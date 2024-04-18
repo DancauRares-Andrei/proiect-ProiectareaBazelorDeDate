@@ -1,0 +1,73 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="C4FD93D5-6FE9-727B-DEB2-BB3B1E2C03A6" name="nume_producator">
+<createdBy>student</createdBy>
+<createdTime>2022-10-21 11:56:05 UTC</createdTime>
+<ownerDesignName>RaresElectronics_nou_v2</ownerDesignName>
+<engineerTo>
+<item key="05ED7043-A4EE-528C-DD35-DBFD656AA9D3" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_firma" id="3AB71D6F-83E8-7009-8EB5-84587F33B5B7">
+<createdBy>student</createdBy>
+<createdTime>2022-10-21 11:57:02 UTC</createdTime>
+<ownerDesignName>RaresElectronics_nou_v2</ownerDesignName>
+<engineerTo>
+<item key="05ED7043-A4EE-528C-DD35-DBFD656AA9D3" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nume_firma" id="45D72FB1-59CB-188F-56CB-0F1A7983ED3F">
+<createdBy>student</createdBy>
+<createdTime>2022-10-21 11:56:30 UTC</createdTime>
+<ownerDesignName>RaresElectronics_nou_v2</ownerDesignName>
+<engineerTo>
+<item key="05ED7043-A4EE-528C-DD35-DBFD656AA9D3" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="4DE84AE7-A2F9-7CC0-3DD2-0EC1C39B4E76" name="nume_producator PK">
+<createdBy>student</createdBy>
+<createdTime>2022-10-21 11:57:16 UTC</createdTime>
+<ownerDesignName>RaresElectronics_nou_v2</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="05ED7043-A4EE-528C-DD35-DBFD656AA9D3" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>3AB71D6F-83E8-7009-8EB5-84587F33B5B7</attributeRef>
+</usedAttributes>
+</identifier>
+<identifier id="0D509EB6-9C8B-B90E-9F2F-586BDAAB9B85" name="nume_firma U">
+<createdBy>Andrei Rares</createdBy>
+<createdTime>2022-10-29 10:28:47 UTC</createdTime>
+<ownerDesignName>RaresElectronics_nou_v2</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="05ED7043-A4EE-528C-DD35-DBFD656AA9D3" value="false"/>
+</engineerTo>
+<newElementsIDs>45D72FB1-59CB-188F-56CB-0F1A7983ED3F</newElementsIDs>
+<usedAttributes>
+<attributeRef>45D72FB1-59CB-188F-56CB-0F1A7983ED3F</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

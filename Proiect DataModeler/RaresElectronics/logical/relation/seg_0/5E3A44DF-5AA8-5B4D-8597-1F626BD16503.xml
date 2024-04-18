@@ -1,0 +1,21 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="leg_produs_vanzare" directorySegmentName="seg_0" id="5E3A44DF-5AA8-5B4D-8597-1F626BD16503">
+<createdBy>student</createdBy>
+<createdTime>2022-10-21 12:16:11 UTC</createdTime>
+<ownerDesignName>RaresElectronics_nou_v2</ownerDesignName>
+<engineerTo>
+<item key="05ED7043-A4EE-528C-DD35-DBFD656AA9D3" value="true"/>
+</engineerTo>
+<sourcePk>71FB9A17-0601-7292-120B-0D062E8E943E</sourcePk>
+<identifying>false</identifying>
+<nameOnSource>are vanzarile</nameOnSource>
+<nameOnTarget>vanzarile corespund</nameOnTarget>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>CDC4F6E5-DAA1-6B47-FA4D-AB4AE03FC028</sourceEntity>
+<targetCardinalityString>*</targetCardinalityString>
+<targetEntity>A80F18A2-0D36-DF0D-FAC3-4DE4CD37EE05</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

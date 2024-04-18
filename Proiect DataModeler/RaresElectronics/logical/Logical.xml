@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<LogicalDesign class="oracle.dbtools.crest.model.design.logical.LogicalDesign" name="Logical" id="C56A2349-58BA-F5A3-288F-C35E5384883B" mainViewID="82D9FE86-5A6B-EE04-C0DC-BFE709D215A0">
+<createdBy>student</createdBy>
+<createdTime>2022-10-21 11:54:59 UTC</createdTime>
+<ownerDesignName>RaresElectronics_nou_v1</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</LogicalDesign>

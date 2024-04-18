@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="738890F7-FB8A-D5DA-2AFA-8AA53FB6DB5D" containerWithKeyObject="823E1F9D-83B8-0C59-F7DD-83CAA30D966A" localFKIndex="87BD5537-6BD7-C194-D645-E4FBE41096A6" name="produse_nume_producator_FK">
+<createdBy>Andrei Rares</createdBy>
+<createdTime>2022-12-10 14:45:43 UTC</createdTime>
+<generatorID>2DFFE434-2D21-00EE-AEB6-DE5D6E9D3CDA</generatorID>
+<ownerDesignName>RaresElectronics_nou_v2</ownerDesignName>
+<referredTableLongName>nume_producator</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>68DC2A74-E532-7256-A776-6D980AE47051</referredTableID>
+<keyObject>276FB937-075C-24E1-1694-E574A350C537</keyObject>
+<referredKeyID>276FB937-075C-24E1-1694-E574A350C537</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_firma</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

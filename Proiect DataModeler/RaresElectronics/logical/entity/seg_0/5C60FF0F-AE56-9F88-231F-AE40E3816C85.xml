@@ -1,0 +1,83 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="5C60FF0F-AE56-9F88-231F-AE40E3816C85" name="Magazie">
+<createdBy>student</createdBy>
+<createdTime>2022-10-21 11:55:28 UTC</createdTime>
+<ownerDesignName>RaresElectronics_nou_v2</ownerDesignName>
+<engineerTo>
+<item key="05ED7043-A4EE-528C-DD35-DBFD656AA9D3" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_p_cr" id="6F87A6D7-0E9F-4B5A-EE06-3229076FC1E0">
+<createdBy>student</createdBy>
+<createdTime>2022-10-21 12:37:40 UTC</createdTime>
+<generatorID>44D8CAED-C026-D219-96AB-F1C6D0FD7C19</generatorID>
+<ownerDesignName>RaresElectronics_nou_v2</ownerDesignName>
+<engineerTo>
+<item key="05ED7043-A4EE-528C-DD35-DBFD656AA9D3" value="true"/>
+</engineerTo>
+<referedAttribute>1D8007DA-5ADE-325E-A2B0-45DDF2AD3A88</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="cantitate_disponibila" id="AED47DDD-A59A-C4FF-5A2E-E82EF6FA02C3">
+<createdBy>student</createdBy>
+<createdTime>2022-10-21 11:55:41 UTC</createdTime>
+<ownerDesignName>RaresElectronics_nou_v2</ownerDesignName>
+<engineerTo>
+<item key="05ED7043-A4EE-528C-DD35-DBFD656AA9D3" value="true"/>
+</engineerTo>
+<constraintName>cant_disp_nr_pozitiv</constraintName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<checkConstraint>
+<implementationDef dbType="Generic Constraint" definition="cantitate_disponibila&gt;0"/>
+</checkConstraint>
+<ownDataTypeParameters>,4,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="pret" id="DDEC48D9-245C-A8EA-4D12-DD2F38A07524">
+<createdBy>student</createdBy>
+<createdTime>2022-10-21 12:28:30 UTC</createdTime>
+<ownerDesignName>RaresElectronics_nou_v2</ownerDesignName>
+<engineerTo>
+<item key="05ED7043-A4EE-528C-DD35-DBFD656AA9D3" value="true"/>
+</engineerTo>
+<constraintName>pret_numar_pozitiv</constraintName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<checkConstraint>
+<implementationDef dbType="Generic Constraint" definition="pret&gt;0"/>
+</checkConstraint>
+<ownDataTypeParameters>,4,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="B82D41E4-E500-34C9-7982-982E93228274" name="prodU">
+<createdBy>Andrei Rares</createdBy>
+<createdTime>2022-11-18 05:27:49 UTC</createdTime>
+<ownerDesignName>RaresElectronics_nou_v2</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="05ED7043-A4EE-528C-DD35-DBFD656AA9D3" value="false"/>
+</engineerTo>
+<newElementsIDs>44D8CAED-C026-D219-96AB-F1C6D0FD7C19</newElementsIDs>
+<usedAttributes>
+<attributeRef>6F87A6D7-0E9F-4B5A-EE06-3229076FC1E0</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

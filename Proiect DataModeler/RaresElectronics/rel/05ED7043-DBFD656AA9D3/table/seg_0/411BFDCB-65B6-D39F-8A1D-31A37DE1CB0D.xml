@@ -1,0 +1,84 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="411BFDCB-65B6-D39F-8A1D-31A37DE1CB0D" name="Magazie">
+<createdBy>Andrei Rares</createdBy>
+<createdTime>2022-12-10 14:45:43 UTC</createdTime>
+<generatorID>5C60FF0F-AE56-9F88-231F-AE40E3816C85</generatorID>
+<ownerDesignName>RaresElectronics_nou_v2</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="produse_id_p_cr" id="28E8DF85-7506-3518-90F5-5A49B7128DBD">
+<createdBy>Andrei Rares</createdBy>
+<createdTime>2022-12-10 14:45:43 UTC</createdTime>
+<generatorID>6F87A6D7-0E9F-4B5A-EE06-3229076FC1E0</generatorID>
+<ownerDesignName>RaresElectronics_nou_v2</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="353B2793-4B5C-5FF2-DC99-DA36A6602A2E" referredColumn="1F4DBDF1-D4EE-D191-5B8F-F022EC1DE898"/>
+</associations>
+</Column>
+<Column name="cantitate_disponibila" id="93D7F0B7-490C-DDCB-3D08-ECC3DEA7C2CB">
+<createdBy>Andrei Rares</createdBy>
+<createdTime>2022-12-10 14:45:43 UTC</createdTime>
+<generatorID>AED47DDD-A59A-C4FF-5A2E-E82EF6FA02C3</generatorID>
+<ownerDesignName>RaresElectronics_nou_v2</ownerDesignName>
+<constraintName>cant_disp_nr_pozitiv</constraintName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<checkConstraint>
+<implementationDef dbType="Generic Constraint" definition="cantitate_disponibila&gt;0"/>
+</checkConstraint>
+<ownDataTypeParameters>,4,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="pret" id="1C163713-1BEC-90D3-512B-A5CEDC51C535">
+<createdBy>Andrei Rares</createdBy>
+<createdTime>2022-12-10 14:45:43 UTC</createdTime>
+<generatorID>DDEC48D9-245C-A8EA-4D12-DD2F38A07524</generatorID>
+<ownerDesignName>RaresElectronics_nou_v2</ownerDesignName>
+<constraintName>pret_numar_pozitiv</constraintName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>4</dataTypePrecision>
+<checkConstraint>
+<implementationDef dbType="Generic Constraint" definition="pret&gt;0"/>
+</checkConstraint>
+<ownDataTypeParameters>,4,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="C0D9E718-FEDE-7E4C-CD14-C5FAA65B4F79" name="Magazie_id_p_cr_UN">
+<createdBy>Andrei Rares</createdBy>
+<createdTime>2022-12-10 14:45:43 UTC</createdTime>
+<generatorID>B82D41E4-E500-34C9-7982-982E93228274</generatorID>
+<ownerDesignName>RaresElectronics_nou_v2</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="28E8DF85-7506-3518-90F5-5A49B7128DBD"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="84948048-7DD2-1989-5DA0-95ABA3516DB5" name="Magazie_produse_FK">
+<createdBy>Andrei Rares</createdBy>
+<createdTime>2022-12-10 14:45:43 UTC</createdTime>
+<generatorID>44D8CAED-C026-D219-96AB-F1C6D0FD7C19</generatorID>
+<ownerDesignName>RaresElectronics_nou_v2</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="28E8DF85-7506-3518-90F5-5A49B7128DBD"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

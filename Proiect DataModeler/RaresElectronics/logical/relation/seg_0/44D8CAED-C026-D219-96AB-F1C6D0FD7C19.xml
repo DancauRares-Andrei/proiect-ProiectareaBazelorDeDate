@@ -1,0 +1,21 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Relation class="oracle.dbtools.crest.model.design.logical.Relation" name="leg_produsConcret_magazie" directorySegmentName="seg_0" id="44D8CAED-C026-D219-96AB-F1C6D0FD7C19">
+<createdBy>student</createdBy>
+<createdTime>2022-10-21 12:37:40 UTC</createdTime>
+<ownerDesignName>RaresElectronics_nou_v2</ownerDesignName>
+<engineerTo>
+<item key="05ED7043-A4EE-528C-DD35-DBFD656AA9D3" value="true"/>
+</engineerTo>
+<sourcePk>71FB9A17-0601-7292-120B-0D062E8E943E</sourcePk>
+<identifying>false</identifying>
+<nameOnSource>are in magazie</nameOnSource>
+<nameOnTarget>corespunde lui</nameOnTarget>
+<optionalSource>true</optionalSource>
+<optionalTarget>false</optionalTarget>
+<sourceCardinality>1</sourceCardinality>
+<sourceEntity>CDC4F6E5-DAA1-6B47-FA4D-AB4AE03FC028</sourceEntity>
+<targetCardinalityString>1</targetCardinalityString>
+<targetEntity>5C60FF0F-AE56-9F88-231F-AE40E3816C85</targetEntity>
+<transferable>true</transferable>
+<deleteRule>NO ACTION</deleteRule>
+</Relation>

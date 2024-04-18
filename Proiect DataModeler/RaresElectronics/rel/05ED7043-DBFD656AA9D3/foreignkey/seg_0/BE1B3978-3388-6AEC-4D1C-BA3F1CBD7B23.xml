@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="BE1B3978-3388-6AEC-4D1C-BA3F1CBD7B23" containerWithKeyObject="823E1F9D-83B8-0C59-F7DD-83CAA30D966A" localFKIndex="249CC71F-9FD9-A47A-E55C-332C94FDBF27" name="produse_stare_produs_FK">
+<createdBy>Andrei Rares</createdBy>
+<createdTime>2022-12-10 14:45:43 UTC</createdTime>
+<generatorID>2EA2E49D-A862-2FFA-984E-F0D3DFBE3B48</generatorID>
+<ownerDesignName>RaresElectronics_nou_v2</ownerDesignName>
+<referredTableLongName>stare_produs</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>A25FD84B-9C51-FED5-4CB5-28D4B551F0E6</referredTableID>
+<keyObject>FFED59DE-2DBE-64DC-5D6A-037A434500C3</keyObject>
+<referredKeyID>FFED59DE-2DBE-64DC-5D6A-037A434500C3</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_stare</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

@@ -1,0 +1,66 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="A25FD84B-9C51-FED5-4CB5-28D4B551F0E6" name="stare_produs">
+<createdBy>Andrei Rares</createdBy>
+<createdTime>2022-12-10 14:45:43 UTC</createdTime>
+<generatorID>5DEE00B5-A612-6676-A0F7-F270FD77076E</generatorID>
+<ownerDesignName>RaresElectronics_nou_v2</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_stare" id="892899E6-DDF8-6C59-2589-338DBA592B0A">
+<createdBy>Andrei Rares</createdBy>
+<createdTime>2022-12-10 14:45:43 UTC</createdTime>
+<generatorID>04C84E58-63C3-F3D3-3A08-5A719A4B8624</generatorID>
+<ownerDesignName>RaresElectronics_nou_v2</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nume_stare" id="274D21A3-2633-99E9-B557-FF6B1DF71A92">
+<createdBy>Andrei Rares</createdBy>
+<createdTime>2022-12-10 14:45:43 UTC</createdTime>
+<generatorID>13C1641D-1D22-9CE7-25BE-75AE92ACD229</generatorID>
+<ownerDesignName>RaresElectronics_nou_v2</ownerDesignName>
+<constraintName>nume_stare_nu_contine_cifre</constraintName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<checkConstraint>
+<implementationDef dbType="Generic Constraint" definition="nume_stare not like &apos;%0%&apos; and nume_stare not like &apos;%1%&apos;  and nume_stare not like &apos;%2%&apos;   and nume_stare not like &apos;%3%&apos;  and nume_stare not like &apos;%4%&apos;  and nume_stare not like &apos;%5%&apos;  and nume_stare not like &apos;%6%&apos;  and nume_stare not like &apos;%7%&apos;  and nume_stare not like &apos;%8%&apos;  and nume_stare not like &apos;%9%&apos;       "/>
+</checkConstraint>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="FFED59DE-2DBE-64DC-5D6A-037A434500C3" name="stare_produs_PK">
+<createdBy>Andrei Rares</createdBy>
+<createdTime>2022-12-10 14:45:43 UTC</createdTime>
+<generatorID>19D41DBA-D802-8608-3650-34C49EB12691</generatorID>
+<ownerDesignName>RaresElectronics_nou_v2</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="892899E6-DDF8-6C59-2589-338DBA592B0A"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="D2DD3EED-BBE9-D9BA-A3F8-837DDFC80F0F" name="stare_produs_nume_stare_UN">
+<createdBy>Andrei Rares</createdBy>
+<createdTime>2022-12-10 14:45:43 UTC</createdTime>
+<generatorID>70790438-C5C6-EA1F-54BF-120BA7B82BD8</generatorID>
+<ownerDesignName>RaresElectronics_nou_v2</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="274D21A3-2633-99E9-B557-FF6B1DF71A92"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

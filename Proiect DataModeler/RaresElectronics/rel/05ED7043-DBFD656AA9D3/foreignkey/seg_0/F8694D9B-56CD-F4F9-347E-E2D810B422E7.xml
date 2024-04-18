@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<FKIndexAssociation class="oracle.dbtools.crest.model.design.relational.FKIndexAssociation" directorySegmentName="seg_0" id="F8694D9B-56CD-F4F9-347E-E2D810B422E7" containerWithKeyObject="2D83CB17-84B7-9919-36EA-186D46B08297" localFKIndex="DEB768B8-AFD7-CF3F-B6F2-27B7B35E6207" name="Vanzari_produse_FK">
+<createdBy>Andrei Rares</createdBy>
+<createdTime>2022-12-10 14:45:43 UTC</createdTime>
+<generatorID>5E3A44DF-5AA8-5B4D-8597-1F626BD16503</generatorID>
+<ownerDesignName>RaresElectronics_nou_v2</ownerDesignName>
+<referredTableLongName>produse</referredTableLongName>
+<deleteRule>NO ACTION</deleteRule>
+<referredTableID>823E1F9D-83B8-0C59-F7DD-83CAA30D966A</referredTableID>
+<keyObject>B5A0E364-2651-DF6C-EF1E-96311BC0FE16</keyObject>
+<referredKeyID>B5A0E364-2651-DF6C-EF1E-96311BC0FE16</referredKeyID>
+<mandatory>true</mandatory>
+<refColNames>id_p_cr</refColNames>
+<transferable>true</transferable>
+<rely>false</rely>
+<columnDependencyConstraintGenerateInDDL>true</columnDependencyConstraintGenerateInDDL>
+</FKIndexAssociation>

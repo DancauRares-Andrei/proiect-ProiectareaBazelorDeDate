@@ -1,0 +1,62 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="68DC2A74-E532-7256-A776-6D980AE47051" name="nume_producator">
+<createdBy>Andrei Rares</createdBy>
+<createdTime>2022-12-10 14:45:43 UTC</createdTime>
+<generatorID>C4FD93D5-6FE9-727B-DEB2-BB3B1E2C03A6</generatorID>
+<ownerDesignName>RaresElectronics_nou_v2</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_firma" id="37FEA583-D066-FB21-6B73-906E3C328946">
+<createdBy>Andrei Rares</createdBy>
+<createdTime>2022-12-10 14:45:43 UTC</createdTime>
+<generatorID>3AB71D6F-83E8-7009-8EB5-84587F33B5B7</generatorID>
+<ownerDesignName>RaresElectronics_nou_v2</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nume_firma" id="60BEAF5C-9BF2-9861-FAFE-954E06555D15">
+<createdBy>Andrei Rares</createdBy>
+<createdTime>2022-12-10 14:45:43 UTC</createdTime>
+<generatorID>45D72FB1-59CB-188F-56CB-0F1A7983ED3F</generatorID>
+<ownerDesignName>RaresElectronics_nou_v2</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="276FB937-075C-24E1-1694-E574A350C537" name="nume_producator_PK">
+<createdBy>Andrei Rares</createdBy>
+<createdTime>2022-12-10 14:45:43 UTC</createdTime>
+<generatorID>4DE84AE7-A2F9-7CC0-3DD2-0EC1C39B4E76</generatorID>
+<ownerDesignName>RaresElectronics_nou_v2</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="37FEA583-D066-FB21-6B73-906E3C328946"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="C70D15D2-41D6-0101-F28A-735DE9756483" name="nume_producator_nume_firma_UN">
+<createdBy>Andrei Rares</createdBy>
+<createdTime>2022-12-10 14:45:43 UTC</createdTime>
+<generatorID>0D509EB6-9C8B-B90E-9F2F-586BDAAB9B85</generatorID>
+<ownerDesignName>RaresElectronics_nou_v2</ownerDesignName>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="60BEAF5C-9BF2-9861-FAFE-954E06555D15"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

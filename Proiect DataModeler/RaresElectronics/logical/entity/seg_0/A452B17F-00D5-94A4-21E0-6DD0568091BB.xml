@@ -1,0 +1,77 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="A452B17F-00D5-94A4-21E0-6DD0568091BB" name="tip_produs">
+<createdBy>student</createdBy>
+<createdTime>2022-10-21 11:59:10 UTC</createdTime>
+<ownerDesignName>RaresElectronics_nou_v2</ownerDesignName>
+<engineerTo>
+<item key="05ED7043-A4EE-528C-DD35-DBFD656AA9D3" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_produs" id="1B73F5B1-1FB4-8C9C-DB08-56011EE7561E">
+<createdBy>student</createdBy>
+<createdTime>2022-10-21 11:59:21 UTC</createdTime>
+<ownerDesignName>RaresElectronics_nou_v2</ownerDesignName>
+<engineerTo>
+<item key="05ED7043-A4EE-528C-DD35-DBFD656AA9D3" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nume_tip_produs" id="1CF6CAE1-0774-D1FE-A5D4-40B72FDC094D">
+<createdBy>student</createdBy>
+<createdTime>2022-10-21 11:59:42 UTC</createdTime>
+<ownerDesignName>RaresElectronics_nou_v2</ownerDesignName>
+<engineerTo>
+<item key="05ED7043-A4EE-528C-DD35-DBFD656AA9D3" value="true"/>
+</engineerTo>
+<constraintName>nume_tip_produs_fara_cifre</constraintName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<checkConstraint>
+<implementationDef dbType="Generic Constraint" definition="nume_tip_produs not like &apos;%0%&apos; and nume_tip_produs not like &apos;%1%&apos;  and nume_tip_produs not like &apos;%2%&apos;   and nume_tip_produs not like &apos;%3%&apos;  and nume_tip_produs not like &apos;%4%&apos;  and nume_tip_produs not like &apos;%5%&apos;  and nume_tip_produs not like &apos;%6%&apos;  and nume_tip_produs not like &apos;%7%&apos;  and nume_tip_produs not like &apos;%8%&apos;  and nume_tip_produs not like &apos;%9%&apos;       "/>
+</checkConstraint>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="37BA24E7-5EEC-9F78-DF0C-F070A1B41F12" name="tip_produs PK">
+<createdBy>student</createdBy>
+<createdTime>2022-10-21 11:59:39 UTC</createdTime>
+<ownerDesignName>RaresElectronics_nou_v2</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="05ED7043-A4EE-528C-DD35-DBFD656AA9D3" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>1B73F5B1-1FB4-8C9C-DB08-56011EE7561E</attributeRef>
+</usedAttributes>
+</identifier>
+<identifier id="A615B5FE-7E2A-EC5D-5AAD-E9C5706B79E5" name="nume_tip_produs U">
+<createdBy>Andrei Rares</createdBy>
+<createdTime>2022-10-29 10:33:41 UTC</createdTime>
+<ownerDesignName>RaresElectronics_nou_v2</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="05ED7043-A4EE-528C-DD35-DBFD656AA9D3" value="false"/>
+</engineerTo>
+<newElementsIDs>1CF6CAE1-0774-D1FE-A5D4-40B72FDC094D</newElementsIDs>
+<usedAttributes>
+<attributeRef>1CF6CAE1-0774-D1FE-A5D4-40B72FDC094D</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

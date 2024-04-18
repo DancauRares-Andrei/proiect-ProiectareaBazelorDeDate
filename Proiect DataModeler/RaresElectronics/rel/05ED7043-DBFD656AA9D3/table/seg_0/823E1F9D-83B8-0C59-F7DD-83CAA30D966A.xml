@@ -1,0 +1,132 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="823E1F9D-83B8-0C59-F7DD-83CAA30D966A" name="produse">
+<createdBy>Andrei Rares</createdBy>
+<createdTime>2022-12-10 14:45:43 UTC</createdTime>
+<generatorID>CDC4F6E5-DAA1-6B47-FA4D-AB4AE03FC028</generatorID>
+<ownerDesignName>RaresElectronics_nou_v2</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<columns itemClass="oracle.dbtools.crest.model.design.relational.Column">
+<Column name="id_p_cr" id="1F4DBDF1-D4EE-D191-5B8F-F022EC1DE898">
+<createdBy>Andrei Rares</createdBy>
+<createdTime>2022-12-10 14:45:43 UTC</createdTime>
+<generatorID>1D8007DA-5ADE-325E-A2B0-45DDF2AD3A88</generatorID>
+<ownerDesignName>RaresElectronics_nou_v2</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
+<autoIncrementColumn>true</autoIncrementColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="tip_produs_id_produs" id="DF102E24-3DF5-BA7B-9036-F83996DA8915">
+<createdBy>Andrei Rares</createdBy>
+<createdTime>2022-12-10 14:45:43 UTC</createdTime>
+<generatorID>F38A2C4A-CE19-3727-6CE8-D282B3E59078</generatorID>
+<ownerDesignName>RaresElectronics_nou_v2</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="6636E4D5-E9BB-B7D4-759B-37134DE23AC3" referredColumn="71775602-5D2C-2CEB-E00D-12B02FAC3F05"/>
+</associations>
+</Column>
+<Column name="car_p" id="E5C7EFE6-6090-B9B4-CF88-9523B5E7E134">
+<createdBy>Andrei Rares</createdBy>
+<createdTime>2022-12-10 14:45:43 UTC</createdTime>
+<generatorID>EBB16585-60A7-4AE4-5838-7D4AC6CA2CFB</generatorID>
+<ownerDesignName>RaresElectronics_nou_v2</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+<autoIncrementCycle>false</autoIncrementCycle>
+</Column>
+<Column name="nume_producator_id_firma" id="C417C67F-F4AB-FB78-5374-CDABB1CD02B2">
+<createdBy>Andrei Rares</createdBy>
+<createdTime>2022-12-10 14:45:43 UTC</createdTime>
+<generatorID>22C249CA-3427-585D-DFAC-16FF3CD600DD</generatorID>
+<ownerDesignName>RaresElectronics_nou_v2</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="738890F7-FB8A-D5DA-2AFA-8AA53FB6DB5D" referredColumn="37FEA583-D066-FB21-6B73-906E3C328946"/>
+</associations>
+</Column>
+<Column name="stare_produs_id_stare" id="03E87F8F-FD09-476D-D177-17A5EE89F3B2">
+<createdBy>Andrei Rares</createdBy>
+<createdTime>2022-12-10 14:45:43 UTC</createdTime>
+<generatorID>E2573CF4-6BE6-15D2-53B8-02E3D90618B8</generatorID>
+<ownerDesignName>RaresElectronics_nou_v2</ownerDesignName>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+<previousColumn>false</previousColumn>
+<autoIncrementCycle>false</autoIncrementCycle>
+<associations>
+<colAssociation fkAssociation="BE1B3978-3388-6AEC-4D1C-BA3F1CBD7B23" referredColumn="892899E6-DDF8-6C59-2589-338DBA592B0A"/>
+</associations>
+</Column>
+</columns>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="B5A0E364-2651-DF6C-EF1E-96311BC0FE16" name="produse_PK">
+<createdBy>Andrei Rares</createdBy>
+<createdTime>2022-12-10 14:45:43 UTC</createdTime>
+<generatorID>71FB9A17-0601-7292-120B-0D062E8E943E</generatorID>
+<ownerDesignName>RaresElectronics_nou_v2</ownerDesignName>
+<pk>true</pk>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="1F4DBDF1-D4EE-D191-5B8F-F022EC1DE898"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="87BD5537-6BD7-C194-D645-E4FBE41096A6" name="produse_nume_producator_FK">
+<createdBy>Andrei Rares</createdBy>
+<createdTime>2022-12-10 14:45:43 UTC</createdTime>
+<generatorID>2DFFE434-2D21-00EE-AEB6-DE5D6E9D3CDA</generatorID>
+<ownerDesignName>RaresElectronics_nou_v2</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="C417C67F-F4AB-FB78-5374-CDABB1CD02B2"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="249CC71F-9FD9-A47A-E55C-332C94FDBF27" name="produse_stare_produs_FK">
+<createdBy>Andrei Rares</createdBy>
+<createdTime>2022-12-10 14:45:43 UTC</createdTime>
+<generatorID>2EA2E49D-A862-2FFA-984E-F0D3DFBE3B48</generatorID>
+<ownerDesignName>RaresElectronics_nou_v2</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="03E87F8F-FD09-476D-D177-17A5EE89F3B2"/>
+</indexColumnUsage>
+</ind_PK_UK>
+<ind_PK_UK id="DB77E748-AE5C-F12C-A366-414F16539127" name="produse_tip_produs_FK">
+<createdBy>Andrei Rares</createdBy>
+<createdTime>2022-12-10 14:45:43 UTC</createdTime>
+<generatorID>119619F8-D20B-0936-7061-9DFEB6C1A918</generatorID>
+<ownerDesignName>RaresElectronics_nou_v2</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+<indexColumnUsage>
+<colUsage columnID="DF102E24-3DF5-BA7B-9036-F83996DA8915"/>
+</indexColumnUsage>
+</ind_PK_UK>
+</indexes>
+</Table>

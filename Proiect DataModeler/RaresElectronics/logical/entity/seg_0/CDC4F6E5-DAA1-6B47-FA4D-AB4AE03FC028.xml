@@ -1,0 +1,105 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="CDC4F6E5-DAA1-6B47-FA4D-AB4AE03FC028" name="produse">
+<createdBy>student</createdBy>
+<createdTime>2022-10-21 11:57:26 UTC</createdTime>
+<ownerDesignName>RaresElectronics_nou_v2</ownerDesignName>
+<engineerTo>
+<item key="05ED7043-A4EE-528C-DD35-DBFD656AA9D3" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_p_cr" id="1D8007DA-5ADE-325E-A2B0-45DDF2AD3A88">
+<createdBy>student</createdBy>
+<createdTime>2022-10-21 12:36:49 UTC</createdTime>
+<ownerDesignName>RaresElectronics_nou_v2</ownerDesignName>
+<engineerTo>
+<item key="05ED7043-A4EE-528C-DD35-DBFD656AA9D3" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_produs" id="F38A2C4A-CE19-3727-6CE8-D282B3E59078">
+<createdBy>student</createdBy>
+<createdTime>2022-10-21 12:05:04 UTC</createdTime>
+<generatorID>119619F8-D20B-0936-7061-9DFEB6C1A918</generatorID>
+<ownerDesignName>RaresElectronics_nou_v2</ownerDesignName>
+<engineerTo>
+<item key="05ED7043-A4EE-528C-DD35-DBFD656AA9D3" value="true"/>
+</engineerTo>
+<referedAttribute>1B73F5B1-1FB4-8C9C-DB08-56011EE7561E</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="car_p" id="EBB16585-60A7-4AE4-5838-7D4AC6CA2CFB">
+<createdBy>student</createdBy>
+<createdTime>2022-10-21 12:05:39 UTC</createdTime>
+<ownerDesignName>RaresElectronics_nou_v2</ownerDesignName>
+<engineerTo>
+<item key="05ED7043-A4EE-528C-DD35-DBFD656AA9D3" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>20</dataTypeSize>
+<ownDataTypeParameters>20,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_firma" id="22C249CA-3427-585D-DFAC-16FF3CD600DD">
+<createdBy>student</createdBy>
+<createdTime>2022-10-21 12:07:24 UTC</createdTime>
+<generatorID>2DFFE434-2D21-00EE-AEB6-DE5D6E9D3CDA</generatorID>
+<ownerDesignName>RaresElectronics_nou_v2</ownerDesignName>
+<engineerTo>
+<item key="05ED7043-A4EE-528C-DD35-DBFD656AA9D3" value="true"/>
+</engineerTo>
+<referedAttribute>3AB71D6F-83E8-7009-8EB5-84587F33B5B7</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="id_stare" id="E2573CF4-6BE6-15D2-53B8-02E3D90618B8">
+<createdBy>student</createdBy>
+<createdTime>2022-10-21 12:13:12 UTC</createdTime>
+<generatorID>2EA2E49D-A862-2FFA-984E-F0D3DFBE3B48</generatorID>
+<ownerDesignName>RaresElectronics_nou_v2</ownerDesignName>
+<engineerTo>
+<item key="05ED7043-A4EE-528C-DD35-DBFD656AA9D3" value="true"/>
+</engineerTo>
+<referedAttribute>04C84E58-63C3-F3D3-3A08-5A719A4B8624</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT019</logicalDatatype>
+<dataTypePrecision>2</dataTypePrecision>
+<ownDataTypeParameters>,2,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="71FB9A17-0601-7292-120B-0D062E8E943E" name="produse PK">
+<createdBy>student</createdBy>
+<createdTime>2022-10-21 12:37:03 UTC</createdTime>
+<ownerDesignName>RaresElectronics_nou_v2</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="05ED7043-A4EE-528C-DD35-DBFD656AA9D3" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>1D8007DA-5ADE-325E-A2B0-45DDF2AD3A88</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
