@@ -14,3 +14,10 @@ EXECUTE tip_produs_pkg.inserare_tip_produs('TranzistorBJ');
 EXECUTE tip_produs_pkg.inserare_tip_produs('TranzistorMOS');
 EXECUTE tip_produs_pkg.inserare_tip_produs('Rezistenta');
 EXECUTE tip_produs_pkg.inserare_tip_produs('Dioda');
+EXECUTE produse_pkg.inserare_produs('Condensator','Capacitate','CapXon','Nou');
+EXECUTE produse_pkg.inserare_produs('TranzistorMOS','VDS','Intel','Folosit');
+EXECUTE produse_pkg.inserare_produs('Bobina','Inductanta','Samsung','Zgariat');
+EXECUTE produse_pkg.inserare_produs('Rezistenta','Rezistenta','Texas Instruments','Defect');
+EXECUTE produse_pkg.inserare_produs('Dioda','Va','Qualcomm','Expirat');
+EXECUTE produse_pkg.inserare_produs('Condensator','Capacitate','Intel','Nou');
+EXECUTE produse_pkg.stergere_produs('Condensator','Capacitate','CapXon','Nou');--De adaugat trigger pentru a verifica unicitatea

@@ -5,69 +5,125 @@
 <ownerDesignName>RaresElectronics</ownerDesignName>
 <source>CREATE OR REPLACE PACKAGE produse_pkg AS
     PROCEDURE inserare_produs(
-        p_id_p_cr IN produse.id_p_cr%TYPE, 
-        p_tip_produs_id_produs IN produse.tip_produs_id_produs%TYPE,
+        p_nume_tip_produs IN tip_produs.nume_tip_produs%TYPE,
         p_car_p IN produse.car_p%TYPE,
-        p_nume_producator_id_firma IN produse.nume_producator_id_firma%TYPE,
-        p_stare_produs_id_stare IN produse.stare_produs_id_stare%TYPE
+        p_nume_firma IN nume_producator.nume_firma%TYPE,
+        p_nume_stare IN stare_produs.nume_stare%TYPE
     );
     
     PROCEDURE actualizare_produs(
-        p_id_p_cr IN produse.id_p_cr%TYPE, 
-        p_tip_produs_id_produs IN produse.tip_produs_id_produs%TYPE,
+        p_nume_tip_produs IN tip_produs.nume_tip_produs%TYPE,
         p_car_p IN produse.car_p%TYPE,
-        p_nume_producator_id_firma IN produse.nume_producator_id_firma%TYPE,
-        p_stare_produs_id_stare IN produse.stare_produs_id_stare%TYPE
+        p_nume_firma IN nume_producator.nume_firma%TYPE,
+        p_nume_stare IN stare_produs.nume_stare%TYPE,
+        p_nume_nou_tip_produs IN tip_produs.nume_tip_produs%TYPE,
+        p_car_nou_p IN produse.car_p%TYPE,
+        p_nume_nou_firma IN nume_producator.nume_firma%TYPE,
+        p_nume_nou_stare IN stare_produs.nume_stare%TYPE
     );
     
-    PROCEDURE stergere_produs(p_id_p_cr IN produse.id_p_cr%TYPE);
+    PROCEDURE stergere_produs(
+    p_nume_tip_produs IN tip_produs.nume_tip_produs%TYPE,
+    p_car_p IN produse.car_p%TYPE,
+    p_nume_firma IN nume_producator.nume_firma%TYPE,
+    p_nume_stare IN stare_produs.nume_stare%TYPE
+    );
     
-    FUNCTION selectare_produs(p_id_p_cr IN produse.id_p_cr%TYPE) RETURN produse%ROWTYPE;
+    FUNCTION selectare_produs(
+    p_nume_tip_produs IN tip_produs.nume_tip_produs%TYPE,
+    p_car_p IN produse.car_p%TYPE,
+    p_nume_firma IN nume_producator.nume_firma%TYPE,
+    p_nume_stare IN stare_produs.nume_stare%TYPE
+    ) RETURN produse%ROWTYPE;
     
     FUNCTION selectare_toate_produsele RETURN SYS_REFCURSOR;
 END produse_pkg;
 /
 CREATE OR REPLACE PACKAGE BODY produse_pkg AS
     PROCEDURE inserare_produs(
-        p_id_p_cr IN produse.id_p_cr%TYPE, 
-        p_tip_produs_id_produs IN produse.tip_produs_id_produs%TYPE,
-        p_car_p IN produse.car_p%TYPE,
-        p_nume_producator_id_firma IN produse.nume_producator_id_firma%TYPE,
-        p_stare_produs_id_stare IN produse.stare_produs_id_stare%TYPE
-    ) AS
+      p_nume_tip_produs IN tip_produs.nume_tip_produs%TYPE,
+      p_car_p IN produse.car_p%TYPE,
+      p_nume_firma IN nume_producator.nume_firma%TYPE,
+      p_nume_stare IN stare_produs.nume_stare%TYPE
+    ) IS
+    p_tip_produs_id_produs produse.tip_produs_id_produs%TYPE;
+    p_nume_producator_id_firma produse.nume_producator_id_firma%TYPE;
+    p_stare_produs_id_stare produse.stare_produs_id_stare%TYPE;
     BEGIN
-        INSERT INTO produse (id_p_cr, tip_produs_id_produs, car_p, nume_producator_id_firma, stare_produs_id_stare) 
-        VALUES (p_id_p_cr, p_tip_produs_id_produs, p_car_p, p_nume_producator_id_firma, p_stare_produs_id_stare);
+        SELECT id_produs INTO p_tip_produs_id_produs from tip_produs where nume_tip_produs like p_nume_tip_produs;
+        SELECT id_firma INTO p_nume_producator_id_firma from nume_producator where nume_firma like p_nume_firma;
+        SELECT id_stare INTO p_stare_produs_id_stare from stare_produs where nume_stare like p_nume_stare;
+        INSERT INTO produse (tip_produs_id_produs,car_p,nume_producator_id_firma,stare_produs_id_stare) 
+        VALUES (p_tip_produs_id_produs, p_car_p, p_nume_producator_id_firma, p_stare_produs_id_stare);
         COMMIT;
     END inserare_produs;
     
-    PROCEDURE actualizare_produs(
-        p_id_p_cr IN produse.id_p_cr%TYPE, 
-        p_tip_produs_id_produs IN produse.tip_produs_id_produs%TYPE,
+    PROCEDURE actualizare_produs(--De verificat
+        p_nume_tip_produs IN tip_produs.nume_tip_produs%TYPE,
         p_car_p IN produse.car_p%TYPE,
-        p_nume_producator_id_firma IN produse.nume_producator_id_firma%TYPE,
-        p_stare_produs_id_stare IN produse.stare_produs_id_stare%TYPE
-    ) AS
+        p_nume_firma IN nume_producator.nume_firma%TYPE,
+        p_nume_stare IN stare_produs.nume_stare%TYPE,
+        p_nume_nou_tip_produs IN tip_produs.nume_tip_produs%TYPE,
+        p_car_nou_p IN produse.car_p%TYPE,
+        p_nume_nou_firma IN nume_producator.nume_firma%TYPE,
+        p_nume_nou_stare IN stare_produs.nume_stare%TYPE
+    ) IS
+    p_id_p_cr produse.id_p_cr%TYPE;
+    p_tip_produs_id_produs produse.tip_produs_id_produs%TYPE;
+    p_nume_producator_id_firma produse.nume_producator_id_firma%TYPE;
+    p_stare_produs_id_stare produse.stare_produs_id_stare%TYPE;
+    p_id_nou_p_cr produse.id_p_cr%TYPE;
+    p_tip_nou_produs_id_produs produse.tip_produs_id_produs%TYPE;
+    p_nume_nou_producator_id_firma produse.nume_producator_id_firma%TYPE;
+    p_stare_nou_produs_id_stare produse.stare_produs_id_stare%TYPE;
     BEGIN
+        SELECT id_produs INTO p_tip_produs_id_produs from tip_produs where nume_tip_produs like p_nume_tip_produs;
+        SELECT id_firma INTO p_nume_producator_id_firma from nume_producator where nume_firma like p_nume_firma;
+        SELECT id_stare INTO p_stare_produs_id_stare from stare_produs where nume_stare like p_nume_stare;
+        SELECT id_produs INTO p_tip_nou_produs_id_produs from tip_produs where nume_tip_produs like p_nume_nou_tip_produs;
+        SELECT id_firma INTO p_nume_nou_producator_id_firma from nume_producator where nume_firma like p_nume_nou_firma;
+        SELECT id_stare INTO p_stare_nou_produs_id_stare from stare_produs where nume_stare like p_nume_nou_stare;
         UPDATE produse 
         SET tip_produs_id_produs = p_tip_produs_id_produs,
             car_p = p_car_p,
             nume_producator_id_firma = p_nume_producator_id_firma,
             stare_produs_id_stare = p_stare_produs_id_stare
-        WHERE id_p_cr = p_id_p_cr;
+        WHERE tip_produs_id_produs=p_tip_produs_id_produs and car_p=p_car_p and nume_producator_id_firma=p_nume_producator_id_firma and stare_produs_id_stare=p_stare_produs_id_stare;
         COMMIT;
     END actualizare_produs;
     
-    PROCEDURE stergere_produs(p_id_p_cr IN produse.id_p_cr%TYPE) AS
+    PROCEDURE stergere_produs(
+    p_nume_tip_produs IN tip_produs.nume_tip_produs%TYPE,
+    p_car_p IN produse.car_p%TYPE,
+    p_nume_firma IN nume_producator.nume_firma%TYPE,
+    p_nume_stare IN stare_produs.nume_stare%TYPE
+    ) IS
+    p_id_p_cr produse.id_p_cr%TYPE;
+    p_tip_produs_id_produs produse.tip_produs_id_produs%TYPE;
+    p_nume_producator_id_firma produse.nume_producator_id_firma%TYPE;
+    p_stare_produs_id_stare produse.stare_produs_id_stare%TYPE;
     BEGIN
-        DELETE FROM produse WHERE id_p_cr = p_id_p_cr;
+        SELECT id_produs INTO p_tip_produs_id_produs from tip_produs where nume_tip_produs like p_nume_tip_produs;
+        SELECT id_firma INTO p_nume_producator_id_firma from nume_producator where nume_firma like p_nume_firma;
+        SELECT id_stare INTO p_stare_produs_id_stare from stare_produs where nume_stare like p_nume_stare;
+        DELETE FROM produse WHERE tip_produs_id_produs=p_tip_produs_id_produs and car_p=p_car_p and nume_producator_id_firma=p_nume_producator_id_firma and stare_produs_id_stare=p_stare_produs_id_stare;
         COMMIT;
     END stergere_produs;
     
-    FUNCTION selectare_produs(p_id_p_cr IN produse.id_p_cr%TYPE) RETURN produse%ROWTYPE AS
-        v_produs produse%ROWTYPE;
+    FUNCTION selectare_produs(p_nume_tip_produs IN tip_produs.nume_tip_produs%TYPE,
+      p_car_p IN produse.car_p%TYPE,
+      p_nume_firma IN nume_producator.nume_firma%TYPE,
+      p_nume_stare IN stare_produs.nume_stare%TYPE) RETURN produse%ROWTYPE IS
+      v_produs produse%ROWTYPE;
+      p_id_p_cr produse.id_p_cr%TYPE;
+      p_tip_produs_id_produs produse.tip_produs_id_produs%TYPE;
+      p_nume_producator_id_firma produse.nume_producator_id_firma%TYPE;
+      p_stare_produs_id_stare produse.stare_produs_id_stare%TYPE;
     BEGIN
-        SELECT * INTO v_produs FROM produse WHERE id_p_cr = p_id_p_cr;
+        SELECT id_produs INTO p_tip_produs_id_produs from tip_produs where nume_tip_produs like p_nume_tip_produs;
+        SELECT id_firma INTO p_nume_producator_id_firma from nume_producator where nume_firma like p_nume_firma;
+        SELECT id_stare INTO p_stare_produs_id_stare from stare_produs where nume_stare like p_nume_stare;
+        SELECT * INTO v_produs FROM produse WHERE WHERE tip_produs_id_produs=p_tip_produs_id_produs and car_p=p_car_p and nume_producator_id_firma=p_nume_producator_id_firma and stare_produs_id_stare=p_stare_produs_id_stare;
         RETURN v_produs;
     END selectare_produs;
     
