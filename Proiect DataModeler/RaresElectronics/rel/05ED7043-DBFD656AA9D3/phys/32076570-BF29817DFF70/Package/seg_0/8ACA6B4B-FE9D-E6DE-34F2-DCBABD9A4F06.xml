@@ -1,0 +1,71 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<PackageOracle class="oracle.dbtools.crest.model.design.storage.oracle.PackageOracle" name="vanzari_pkg" directorySegmentName="seg_0" id="8ACA6B4B-FE9D-E6DE-34F2-DCBABD9A4F06">
+<createdBy>rares</createdBy>
+<createdTime>2024-04-18 09:38:48 UTC</createdTime>
+<ownerDesignName>RaresElectronics</ownerDesignName>
+<source>CREATE OR REPLACE PACKAGE vanzari_pkg AS
+    PROCEDURE inserare_vanzare(
+        p_produse_id_p_cr IN vanzari.produse_id_p_cr%TYPE, 
+        p_cantitate_dorita IN vanzari.cantitate_dorita%TYPE,
+        p_data IN vanzari.data%TYPE
+    );
+    
+    PROCEDURE actualizare_vanzare(
+        p_produse_id_p_cr IN vanzari.produse_id_p_cr%TYPE, 
+        p_cantitate_dorita IN vanzari.cantitate_dorita%TYPE,
+        p_data IN vanzari.data%TYPE
+    );
+    
+    PROCEDURE stergere_vanzare(p_produse_id_p_cr IN vanzari.produse_id_p_cr%TYPE);
+    
+    FUNCTION selectare_vanzare(p_produse_id_p_cr IN vanzari.produse_id_p_cr%TYPE) RETURN vanzari%ROWTYPE;
+    
+    FUNCTION selectare_toate_vanzarile RETURN SYS_REFCURSOR;
+END vanzari_pkg;
+/
+CREATE OR REPLACE PACKAGE BODY vanzari_pkg AS
+    PROCEDURE inserare_vanzare(
+        p_produse_id_p_cr IN vanzari.produse_id_p_cr%TYPE, 
+        p_cantitate_dorita IN vanzari.cantitate_dorita%TYPE,
+        p_data IN vanzari.data%TYPE
+    ) AS
+    BEGIN
+        INSERT INTO vanzari (produse_id_p_cr, cantitate_dorita, data) 
+        VALUES (p_produse_id_p_cr, p_cantitate_dorita, p_data);
+        COMMIT;
+    END inserare_vanzare;
+    
+    PROCEDURE actualizare_vanzare(
+        p_produse_id_p_cr IN vanzari.produse_id_p_cr%TYPE, 
+        p_cantitate_dorita IN vanzari.cantitate_dorita%TYPE,
+        p_data IN vanzari.data%TYPE
+    ) AS
+    BEGIN
+        UPDATE vanzari 
+        SET cantitate_dorita = p_cantitate_dorita,
+            data = p_data
+        WHERE produse_id_p_cr = p_produse_id_p_cr;
+        COMMIT;
+    END actualizare_vanzare;
+    
+    PROCEDURE stergere_vanzare(p_produse_id_p_cr IN vanzari.produse_id_p_cr%TYPE) AS
+    BEGIN
+        DELETE FROM vanzari WHERE produse_id_p_cr = p_produse_id_p_cr;
+        COMMIT;
+    END stergere_vanzare;
+    
+    FUNCTION selectare_vanzare(p_produse_id_p_cr IN vanzari.produse_id_p_cr%TYPE) RETURN vanzari%ROWTYPE AS
+        v_vanzare vanzari%ROWTYPE;
+    BEGIN
+        SELECT * INTO v_vanzare FROM vanzari WHERE produse_id_p_cr = p_produse_id_p_cr;
+        RETURN v_vanzare;
+    END selectare_vanzare;
+    
+    FUNCTION selectare_toate_vanzarile RETURN SYS_REFCURSOR AS
+        v_cursor SYS_REFCURSOR;
+    BEGIN
+        OPEN v_cursor FOR SELECT * FROM vanzari;
+        RETURN v_cursor;
+    END selectare_toate_vanzarile;
+END vanzari_pkg;</source>
+</PackageOracle>

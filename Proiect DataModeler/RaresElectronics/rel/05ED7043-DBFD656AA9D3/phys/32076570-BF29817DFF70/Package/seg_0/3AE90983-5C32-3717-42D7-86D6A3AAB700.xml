@@ -1,0 +1,96 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<PackageOracle class="oracle.dbtools.crest.model.design.storage.oracle.PackageOracle" name="magazie_pkg" directorySegmentName="seg_0" id="3AE90983-5C32-3717-42D7-86D6A3AAB700">
+<createdBy>rares</createdBy>
+<createdTime>2024-04-18 09:42:06 UTC</createdTime>
+<ownerDesignName>RaresElectronics</ownerDesignName>
+<source>CREATE OR REPLACE PACKAGE magazie_pkg AS
+    -- Procedura pentru inserarea unui nou rând în tabel
+    PROCEDURE insert_magazie(
+        p_produse_id_p_cr       IN magazie.produse_id_p_cr%TYPE,
+        p_cantitate_disponibila IN magazie.cantitate_disponibila%TYPE,
+        p_pret                  IN magazie.pret%TYPE
+    );
+
+    -- Procedura pentru actualizarea unui rând existent în tabel
+    PROCEDURE update_magazie(
+        p_produse_id_p_cr       IN magazie.produse_id_p_cr%TYPE,
+        p_cantitate_disponibila IN magazie.cantitate_disponibila%TYPE,
+        p_pret                  IN magazie.pret%TYPE
+    );
+
+    -- Procedura pentru ștergerea unui rând din tabel
+    PROCEDURE delete_magazie(
+        p_produse_id_p_cr IN magazie.produse_id_p_cr%TYPE
+    );
+
+    -- Funcție pentru selectarea unui rând din tabel
+    FUNCTION get_magazie(
+        p_produse_id_p_cr IN magazie.produse_id_p_cr%TYPE
+    ) RETURN SYS_REFCURSOR;
+
+    -- Funcție pentru selectarea tuturor rândurilor din tabel
+    FUNCTION get_all_magazie RETURN SYS_REFCURSOR;
+END magazie_pkg;
+/
+
+CREATE OR REPLACE PACKAGE BODY magazie_pkg AS
+    -- Procedura pentru inserarea unui nou rând în tabel
+    PROCEDURE insert_magazie(
+        p_produse_id_p_cr       IN magazie.produse_id_p_cr%TYPE,
+        p_cantitate_disponibila IN magazie.cantitate_disponibila%TYPE,
+        p_pret                  IN magazie.pret%TYPE
+    ) IS
+    BEGIN
+        INSERT INTO magazie (produse_id_p_cr, cantitate_disponibila, pret)
+        VALUES (p_produse_id_p_cr, p_cantitate_disponibila, p_pret);
+        COMMIT;
+    END insert_magazie;
+
+    -- Procedura pentru actualizarea unui rând existent în tabel
+    PROCEDURE update_magazie(
+        p_produse_id_p_cr       IN magazie.produse_id_p_cr%TYPE,
+        p_cantitate_disponibila IN magazie.cantitate_disponibila%TYPE,
+        p_pret                  IN magazie.pret%TYPE
+    ) IS
+    BEGIN
+        UPDATE magazie
+        SET cantitate_disponibila = p_cantitate_disponibila,
+            pret = p_pret
+        WHERE produse_id_p_cr = p_produse_id_p_cr;
+        COMMIT;
+    END update_magazie;
+
+    -- Procedura pentru ștergerea unui rând din tabel
+    PROCEDURE delete_magazie(
+        p_produse_id_p_cr IN magazie.produse_id_p_cr%TYPE
+    ) IS
+    BEGIN
+        DELETE FROM magazie
+        WHERE produse_id_p_cr = p_produse_id_p_cr;
+        COMMIT;
+    END delete_magazie;
+
+    -- Funcție pentru selectarea unui rând din tabel
+    FUNCTION get_magazie(
+        p_produse_id_p_cr IN magazie.produse_id_p_cr%TYPE
+    ) RETURN SYS_REFCURSOR IS
+        v_cursor SYS_REFCURSOR;
+    BEGIN
+        OPEN v_cursor FOR
+        SELECT *
+        FROM magazie
+        WHERE produse_id_p_cr = p_produse_id_p_cr;
+        RETURN v_cursor;
+    END get_magazie;
+
+    -- Funcție pentru selectarea tuturor rândurilor din tabel
+    FUNCTION get_all_magazie RETURN SYS_REFCURSOR IS
+        v_cursor SYS_REFCURSOR;
+    BEGIN
+        OPEN v_cursor FOR
+        SELECT *
+        FROM magazie;
+        RETURN v_cursor;
+    END get_all_magazie;
+END magazie_pkg;</source>
+</PackageOracle>

@@ -1,0 +1,39 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev11g class="oracle.dbtools.crest.model.design.storage.oracle.v11g.TableProxyOraclev11g" name="nume_producator" directorySegmentName="seg_0" id="68DC2A74-E532-7256-A776-6D980AE47051">
+<createdBy>rares</createdBy>
+<createdTime>2024-04-18 09:38:44 UTC</createdTime>
+<ownerDesignName>RaresElectronics</ownerDesignName>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="id_firma" id="37FEA583-D066-FB21-6B73-906E3C328946">
+<createdBy>rares</createdBy>
+<createdTime>2024-04-18 09:38:44 UTC</createdTime>
+<ownerDesignName>RaresElectronics</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="nume_firma" id="60BEAF5C-9BF2-9861-FAFE-954E06555D15">
+<createdBy>rares</createdBy>
+<createdTime>2024-04-18 09:38:44 UTC</createdTime>
+<ownerDesignName>RaresElectronics</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="nume_producator_PK" id="276FB937-075C-24E1-1694-E574A350C537">
+<createdBy>rares</createdBy>
+<createdTime>2024-04-18 09:38:44 UTC</createdTime>
+<ownerDesignName>RaresElectronics</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+<uniqueKeys>
+<UniqueKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.UniqueOraclev10g" name="nume_producator_nume_firma_UN" id="C70D15D2-41D6-0101-F28A-735DE9756483">
+<createdBy>rares</createdBy>
+<createdTime>2024-04-18 09:38:44 UTC</createdTime>
+<ownerDesignName>RaresElectronics</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</UniqueKey>
+</uniqueKeys>
+</TableProxyOraclev11g>

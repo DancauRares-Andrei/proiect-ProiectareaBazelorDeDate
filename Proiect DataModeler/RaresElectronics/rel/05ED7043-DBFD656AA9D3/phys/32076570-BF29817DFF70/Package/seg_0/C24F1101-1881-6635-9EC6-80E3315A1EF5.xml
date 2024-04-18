@@ -1,0 +1,51 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<PackageOracle class="oracle.dbtools.crest.model.design.storage.oracle.PackageOracle" name="tip_produs_pkg" directorySegmentName="seg_0" id="C24F1101-1881-6635-9EC6-80E3315A1EF5">
+<createdBy>rares</createdBy>
+<createdTime>2024-04-18 09:40:15 UTC</createdTime>
+<ownerDesignName>RaresElectronics</ownerDesignName>
+<source>CREATE OR REPLACE PACKAGE tip_produs_pkg AS
+    PROCEDURE inserare_tip_produs(p_id_produs IN tip_produs.id_produs%TYPE, p_nume_tip_produs IN tip_produs.nume_tip_produs%TYPE);
+    
+    PROCEDURE actualizare_tip_produs(p_id_produs IN tip_produs.id_produs%TYPE, p_nume_tip_produs IN tip_produs.nume_tip_produs%TYPE);
+    
+    PROCEDURE stergere_tip_produs(p_id_produs IN tip_produs.id_produs%TYPE);
+    
+    FUNCTION selectare_tip_produs(p_id_produs IN tip_produs.id_produs%TYPE) RETURN tip_produs%ROWTYPE;
+    
+    FUNCTION selectare_toate_tipurile RETURN SYS_REFCURSOR;
+END tip_produs_pkg;
+/
+CREATE OR REPLACE PACKAGE BODY tip_produs_pkg AS
+    PROCEDURE inserare_tip_produs(p_id_produs IN tip_produs.id_produs%TYPE, p_nume_tip_produs IN tip_produs.nume_tip_produs%TYPE) AS
+    BEGIN
+        INSERT INTO tip_produs (id_produs, nume_tip_produs) VALUES (p_id_produs, p_nume_tip_produs);
+        COMMIT;
+    END inserare_tip_produs;
+    
+    PROCEDURE actualizare_tip_produs(p_id_produs IN tip_produs.id_produs%TYPE, p_nume_tip_produs IN tip_produs.nume_tip_produs%TYPE) AS
+    BEGIN
+        UPDATE tip_produs SET nume_tip_produs = p_nume_tip_produs WHERE id_produs = p_id_produs;
+        COMMIT;
+    END actualizare_tip_produs;
+    
+    PROCEDURE stergere_tip_produs(p_id_produs IN tip_produs.id_produs%TYPE) AS
+    BEGIN
+        DELETE FROM tip_produs WHERE id_produs = p_id_produs;
+        COMMIT;
+    END stergere_tip_produs;
+    
+    FUNCTION selectare_tip_produs(p_id_produs IN tip_produs.id_produs%TYPE) RETURN tip_produs%ROWTYPE AS
+        v_tip_produs tip_produs%ROWTYPE;
+    BEGIN
+        SELECT * INTO v_tip_produs FROM tip_produs WHERE id_produs = p_id_produs;
+        RETURN v_tip_produs;
+    END selectare_tip_produs;
+    
+    FUNCTION selectare_toate_tipurile RETURN SYS_REFCURSOR AS
+        v_cursor SYS_REFCURSOR;
+    BEGIN
+        OPEN v_cursor FOR SELECT * FROM tip_produs;
+        RETURN v_cursor;
+    END selectare_toate_tipurile;
+END tip_produs_pkg;</source>
+</PackageOracle>

@@ -1,0 +1,35 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev11g class="oracle.dbtools.crest.model.design.storage.oracle.v11g.TableProxyOraclev11g" name="Vanzari" directorySegmentName="seg_0" id="2D83CB17-84B7-9919-36EA-186D46B08297">
+<createdBy>rares</createdBy>
+<createdTime>2024-04-18 09:38:44 UTC</createdTime>
+<ownerDesignName>RaresElectronics</ownerDesignName>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="cantitate_dorita" id="551312FF-C9E6-B973-0BB7-E3AD59D51408">
+<createdBy>rares</createdBy>
+<createdTime>2024-04-18 09:38:44 UTC</createdTime>
+<ownerDesignName>RaresElectronics</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="produse_id_p_cr" id="AB8CA1B6-0213-7F10-4C97-3E58FD3DA9DC">
+<createdBy>rares</createdBy>
+<createdTime>2024-04-18 09:38:44 UTC</createdTime>
+<ownerDesignName>RaresElectronics</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="data" id="CC1A80F0-5940-1A7D-CAAF-5E42CDAB6482">
+<createdBy>rares</createdBy>
+<createdTime>2024-04-18 09:38:44 UTC</createdTime>
+<ownerDesignName>RaresElectronics</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="Vanzari_produse_FK" id="DEB768B8-AFD7-CF3F-B6F2-27B7B35E6207">
+<createdBy>rares</createdBy>
+<createdTime>2024-04-18 09:38:44 UTC</createdTime>
+<ownerDesignName>RaresElectronics</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+</TableProxyOraclev11g>

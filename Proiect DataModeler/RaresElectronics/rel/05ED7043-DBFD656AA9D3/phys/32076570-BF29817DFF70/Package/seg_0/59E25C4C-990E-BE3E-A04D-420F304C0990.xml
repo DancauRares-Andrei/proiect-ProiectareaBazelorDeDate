@@ -1,0 +1,51 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<PackageOracle class="oracle.dbtools.crest.model.design.storage.oracle.PackageOracle" name="nume_producator_pkg" directorySegmentName="seg_0" id="59E25C4C-990E-BE3E-A04D-420F304C0990">
+<createdBy>rares</createdBy>
+<createdTime>2024-04-18 09:42:39 UTC</createdTime>
+<ownerDesignName>RaresElectronics</ownerDesignName>
+<source>CREATE OR REPLACE PACKAGE nume_producator_pkg AS
+    PROCEDURE inserare_producator(p_id_firma IN nume_producator.id_firma%TYPE, p_nume_firma IN nume_producator.nume_firma%TYPE);
+    
+    PROCEDURE actualizare_producator(p_id_firma IN nume_producator.id_firma%TYPE, p_nume_firma IN nume_producator.nume_firma%TYPE);
+    
+    PROCEDURE stergere_producator(p_id_firma IN nume_producator.id_firma%TYPE);
+    
+    FUNCTION selectare_producator(p_id_firma IN nume_producator.id_firma%TYPE) RETURN nume_producator%ROWTYPE;
+    
+    FUNCTION selectare_toti_producatorii RETURN SYS_REFCURSOR;
+END nume_producator_pkg;
+/
+CREATE OR REPLACE PACKAGE BODY nume_producator_pkg AS
+    PROCEDURE inserare_producator(p_id_firma IN nume_producator.id_firma%TYPE, p_nume_firma IN nume_producator.nume_firma%TYPE) AS
+    BEGIN
+        INSERT INTO nume_producator (id_firma, nume_firma) VALUES (p_id_firma, p_nume_firma);
+        COMMIT;
+    END inserare_producator;
+    
+    PROCEDURE actualizare_producator(p_id_firma IN nume_producator.id_firma%TYPE, p_nume_firma IN nume_producator.nume_firma%TYPE) AS
+    BEGIN
+        UPDATE nume_producator SET nume_firma = p_nume_firma WHERE id_firma = p_id_firma;
+        COMMIT;
+    END actualizare_producator;
+    
+    PROCEDURE stergere_producator(p_id_firma IN nume_producator.id_firma%TYPE) AS
+    BEGIN
+        DELETE FROM nume_producator WHERE id_firma = p_id_firma;
+        COMMIT;
+    END stergere_producator;
+    
+    FUNCTION selectare_producator(p_id_firma IN nume_producator.id_firma%TYPE) RETURN nume_producator%ROWTYPE AS
+        v_producator nume_producator%ROWTYPE;
+    BEGIN
+        SELECT * INTO v_producator FROM nume_producator WHERE id_firma = p_id_firma;
+        RETURN v_producator;
+    END selectare_producator;
+    
+    FUNCTION selectare_toti_producatorii RETURN SYS_REFCURSOR AS
+        v_cursor SYS_REFCURSOR;
+    BEGIN
+        OPEN v_cursor FOR SELECT * FROM nume_producator;
+        RETURN v_cursor;
+    END selectare_toti_producatorii;
+END nume_producator_pkg;</source>
+</PackageOracle>

@@ -1,0 +1,81 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<PackageOracle class="oracle.dbtools.crest.model.design.storage.oracle.PackageOracle" name="produse_pkg" directorySegmentName="seg_0" id="CF59239B-986E-6987-CE15-3DBB3822BFEC">
+<createdBy>rares</createdBy>
+<createdTime>2024-04-18 09:40:47 UTC</createdTime>
+<ownerDesignName>RaresElectronics</ownerDesignName>
+<source>CREATE OR REPLACE PACKAGE produse_pkg AS
+    PROCEDURE inserare_produs(
+        p_id_p_cr IN produse.id_p_cr%TYPE, 
+        p_tip_produs_id_produs IN produse.tip_produs_id_produs%TYPE,
+        p_car_p IN produse.car_p%TYPE,
+        p_nume_producator_id_firma IN produse.nume_producator_id_firma%TYPE,
+        p_stare_produs_id_stare IN produse.stare_produs_id_stare%TYPE
+    );
+    
+    PROCEDURE actualizare_produs(
+        p_id_p_cr IN produse.id_p_cr%TYPE, 
+        p_tip_produs_id_produs IN produse.tip_produs_id_produs%TYPE,
+        p_car_p IN produse.car_p%TYPE,
+        p_nume_producator_id_firma IN produse.nume_producator_id_firma%TYPE,
+        p_stare_produs_id_stare IN produse.stare_produs_id_stare%TYPE
+    );
+    
+    PROCEDURE stergere_produs(p_id_p_cr IN produse.id_p_cr%TYPE);
+    
+    FUNCTION selectare_produs(p_id_p_cr IN produse.id_p_cr%TYPE) RETURN produse%ROWTYPE;
+    
+    FUNCTION selectare_toate_produsele RETURN SYS_REFCURSOR;
+END produse_pkg;
+/
+CREATE OR REPLACE PACKAGE BODY produse_pkg AS
+    PROCEDURE inserare_produs(
+        p_id_p_cr IN produse.id_p_cr%TYPE, 
+        p_tip_produs_id_produs IN produse.tip_produs_id_produs%TYPE,
+        p_car_p IN produse.car_p%TYPE,
+        p_nume_producator_id_firma IN produse.nume_producator_id_firma%TYPE,
+        p_stare_produs_id_stare IN produse.stare_produs_id_stare%TYPE
+    ) AS
+    BEGIN
+        INSERT INTO produse (id_p_cr, tip_produs_id_produs, car_p, nume_producator_id_firma, stare_produs_id_stare) 
+        VALUES (p_id_p_cr, p_tip_produs_id_produs, p_car_p, p_nume_producator_id_firma, p_stare_produs_id_stare);
+        COMMIT;
+    END inserare_produs;
+    
+    PROCEDURE actualizare_produs(
+        p_id_p_cr IN produse.id_p_cr%TYPE, 
+        p_tip_produs_id_produs IN produse.tip_produs_id_produs%TYPE,
+        p_car_p IN produse.car_p%TYPE,
+        p_nume_producator_id_firma IN produse.nume_producator_id_firma%TYPE,
+        p_stare_produs_id_stare IN produse.stare_produs_id_stare%TYPE
+    ) AS
+    BEGIN
+        UPDATE produse 
+        SET tip_produs_id_produs = p_tip_produs_id_produs,
+            car_p = p_car_p,
+            nume_producator_id_firma = p_nume_producator_id_firma,
+            stare_produs_id_stare = p_stare_produs_id_stare
+        WHERE id_p_cr = p_id_p_cr;
+        COMMIT;
+    END actualizare_produs;
+    
+    PROCEDURE stergere_produs(p_id_p_cr IN produse.id_p_cr%TYPE) AS
+    BEGIN
+        DELETE FROM produse WHERE id_p_cr = p_id_p_cr;
+        COMMIT;
+    END stergere_produs;
+    
+    FUNCTION selectare_produs(p_id_p_cr IN produse.id_p_cr%TYPE) RETURN produse%ROWTYPE AS
+        v_produs produse%ROWTYPE;
+    BEGIN
+        SELECT * INTO v_produs FROM produse WHERE id_p_cr = p_id_p_cr;
+        RETURN v_produs;
+    END selectare_produs;
+    
+    FUNCTION selectare_toate_produsele RETURN SYS_REFCURSOR AS
+        v_cursor SYS_REFCURSOR;
+    BEGIN
+        OPEN v_cursor FOR SELECT * FROM produse;
+        RETURN v_cursor;
+    END selectare_toate_produsele;
+END produse_pkg;</source>
+</PackageOracle>

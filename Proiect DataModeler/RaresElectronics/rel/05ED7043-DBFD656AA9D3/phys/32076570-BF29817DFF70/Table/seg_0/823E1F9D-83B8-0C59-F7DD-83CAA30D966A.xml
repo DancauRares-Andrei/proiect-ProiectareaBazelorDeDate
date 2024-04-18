@@ -1,0 +1,63 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev11g class="oracle.dbtools.crest.model.design.storage.oracle.v11g.TableProxyOraclev11g" name="produse" directorySegmentName="seg_0" id="823E1F9D-83B8-0C59-F7DD-83CAA30D966A">
+<createdBy>rares</createdBy>
+<createdTime>2024-04-18 09:38:44 UTC</createdTime>
+<ownerDesignName>RaresElectronics</ownerDesignName>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<columnProxies itemClass="oracle.dbtools.crest.model.design.storage.oracle.v12c.ColumnProxyOraclev12c">
+<ColumnProxy name="stare_produs_id_stare" id="03E87F8F-FD09-476D-D177-17A5EE89F3B2">
+<createdBy>rares</createdBy>
+<createdTime>2024-04-18 09:38:44 UTC</createdTime>
+<ownerDesignName>RaresElectronics</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="id_p_cr" id="1F4DBDF1-D4EE-D191-5B8F-F022EC1DE898">
+<createdBy>rares</createdBy>
+<createdTime>2024-04-18 09:38:44 UTC</createdTime>
+<ownerDesignName>RaresElectronics</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="nume_producator_id_firma" id="C417C67F-F4AB-FB78-5374-CDABB1CD02B2">
+<createdBy>rares</createdBy>
+<createdTime>2024-04-18 09:38:44 UTC</createdTime>
+<ownerDesignName>RaresElectronics</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="tip_produs_id_produs" id="DF102E24-3DF5-BA7B-9036-F83996DA8915">
+<createdBy>rares</createdBy>
+<createdTime>2024-04-18 09:38:44 UTC</createdTime>
+<ownerDesignName>RaresElectronics</ownerDesignName>
+</ColumnProxy>
+<ColumnProxy name="car_p" id="E5C7EFE6-6090-B9B4-CF88-9523B5E7E134">
+<createdBy>rares</createdBy>
+<createdTime>2024-04-18 09:38:44 UTC</createdTime>
+<ownerDesignName>RaresElectronics</ownerDesignName>
+</ColumnProxy>
+</columnProxies>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="produse_stare_produs_FK" id="249CC71F-9FD9-A47A-E55C-332C94FDBF27">
+<createdBy>rares</createdBy>
+<createdTime>2024-04-18 09:38:44 UTC</createdTime>
+<ownerDesignName>RaresElectronics</ownerDesignName>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="produse_nume_producator_FK" id="87BD5537-6BD7-C194-D645-E4FBE41096A6">
+<createdBy>rares</createdBy>
+<createdTime>2024-04-18 09:38:44 UTC</createdTime>
+<ownerDesignName>RaresElectronics</ownerDesignName>
+</ForeignKey>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="produse_tip_produs_FK" id="DB77E748-AE5C-F12C-A366-414F16539127">
+<createdBy>rares</createdBy>
+<createdTime>2024-04-18 09:38:44 UTC</createdTime>
+<ownerDesignName>RaresElectronics</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="produse_PK" id="B5A0E364-2651-DF6C-EF1E-96311BC0FE16">
+<createdBy>rares</createdBy>
+<createdTime>2024-04-18 09:38:44 UTC</createdTime>
+<ownerDesignName>RaresElectronics</ownerDesignName>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev11g>
