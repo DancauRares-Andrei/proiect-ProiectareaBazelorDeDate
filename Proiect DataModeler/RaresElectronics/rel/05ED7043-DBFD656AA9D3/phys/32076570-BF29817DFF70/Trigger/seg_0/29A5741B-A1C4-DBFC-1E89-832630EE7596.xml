@@ -7,20 +7,19 @@
 <body><![CDATA[DECLARE
     v_stoc_magazie NUMBER;
 BEGIN
-    SELECT stoc_disponibil
+    SELECT cantitate_disponibila
     INTO v_stoc_magazie
     FROM magazie
-    WHERE produs_id_p_cr = :NEW.produse_id_p_cr;
+    WHERE produse_id_p_cr = :NEW.produse_id_p_cr;
 
     IF v_stoc_magazie < :NEW.cantitate_dorita THEN
         raise_application_error(-20001, 'Stoc insuficient produs.');
     ELSE
         UPDATE magazie
-        SET stoc_disponibil = v_stoc_magazie - :NEW.cantitate_dorita
-        WHERE produs_id_p_cr = :NEW.produse_id_p_cr;
+        SET cantitate_disponibila = v_stoc_magazie - :NEW.cantitate_dorita
+        WHERE produse_id_p_cr = :NEW.produse_id_p_cr;
     END IF;
-END;
-/]]></body>
+END]]></body>
 <triggerTime>BEFORE</triggerTime>
 <table>2D83CB17-84B7-9919-36EA-186D46B08297</table>
 </TriggerOraclev10g>

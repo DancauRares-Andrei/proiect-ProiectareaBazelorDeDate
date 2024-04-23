@@ -5,23 +5,35 @@
 <ownerDesignName>RaresElectronics</ownerDesignName>
 <source>CREATE OR REPLACE PACKAGE magazie_pkg AS
     PROCEDURE insert_magazie(
-        p_produse_id_p_cr       IN magazie.produse_id_p_cr%TYPE,
+        p_nume_tip_produs IN tip_produs.nume_tip_produs%TYPE,
+        p_car_p IN produse.car_p%TYPE,
+        p_nume_firma IN nume_producator.nume_firma%TYPE,
+        p_nume_stare IN stare_produs.nume_stare%TYPE,
         p_cantitate_disponibila IN magazie.cantitate_disponibila%TYPE,
         p_pret                  IN magazie.pret%TYPE
     );
 
     PROCEDURE update_magazie(
-        p_produse_id_p_cr       IN magazie.produse_id_p_cr%TYPE,
+        p_nume_tip_produs IN tip_produs.nume_tip_produs%TYPE,
+        p_car_p IN produse.car_p%TYPE,
+        p_nume_firma IN nume_producator.nume_firma%TYPE,
+        p_nume_stare IN stare_produs.nume_stare%TYPE,
         p_cantitate_disponibila IN magazie.cantitate_disponibila%TYPE,
         p_pret                  IN magazie.pret%TYPE
     );
 
     PROCEDURE delete_magazie(
-        p_produse_id_p_cr IN magazie.produse_id_p_cr%TYPE
+        p_nume_tip_produs IN tip_produs.nume_tip_produs%TYPE,
+        p_car_p IN produse.car_p%TYPE,
+        p_nume_firma IN nume_producator.nume_firma%TYPE,
+        p_nume_stare IN stare_produs.nume_stare%TYPE
     );
 
     FUNCTION get_magazie(
-        p_produse_id_p_cr IN magazie.produse_id_p_cr%TYPE
+        p_nume_tip_produs IN tip_produs.nume_tip_produs%TYPE,
+        p_car_p IN produse.car_p%TYPE,
+        p_nume_firma IN nume_producator.nume_firma%TYPE,
+        p_nume_stare IN stare_produs.nume_stare%TYPE
     ) RETURN SYS_REFCURSOR;
 
     FUNCTION get_all_magazie RETURN SYS_REFCURSOR;
@@ -30,22 +42,44 @@ END magazie_pkg;
 
 CREATE OR REPLACE PACKAGE BODY magazie_pkg AS
     PROCEDURE insert_magazie(
-        p_produse_id_p_cr       IN magazie.produse_id_p_cr%TYPE,
+        p_nume_tip_produs IN tip_produs.nume_tip_produs%TYPE,
+        p_car_p IN produse.car_p%TYPE,
+        p_nume_firma IN nume_producator.nume_firma%TYPE,
+        p_nume_stare IN stare_produs.nume_stare%TYPE,
         p_cantitate_disponibila IN magazie.cantitate_disponibila%TYPE,
         p_pret                  IN magazie.pret%TYPE
     ) IS
+    p_tip_produs_id_produs produse.tip_produs_id_produs%TYPE;
+    p_nume_producator_id_firma produse.nume_producator_id_firma%TYPE;
+    p_stare_produs_id_stare produse.stare_produs_id_stare%TYPE;
+    p_produse_id_p_cr magazie.produse_id_p_cr%TYPE;
     BEGIN
+        SELECT id_produs INTO p_tip_produs_id_produs from tip_produs where nume_tip_produs like p_nume_tip_produs;
+        SELECT id_firma INTO p_nume_producator_id_firma from nume_producator where nume_firma like p_nume_firma;
+        SELECT id_stare INTO p_stare_produs_id_stare from stare_produs where nume_stare like p_nume_stare;
+        SELECT id_p_cr INTO p_produse_id_p_cr FROM produse WHERE tip_produs_id_produs=p_tip_produs_id_produs and car_p=p_car_p and nume_producator_id_firma=p_nume_producator_id_firma and stare_produs_id_stare=p_stare_produs_id_stare;
         INSERT INTO magazie (produse_id_p_cr, cantitate_disponibila, pret)
         VALUES (p_produse_id_p_cr, p_cantitate_disponibila, p_pret);
         COMMIT;
     END insert_magazie;
 
     PROCEDURE update_magazie(
-        p_produse_id_p_cr       IN magazie.produse_id_p_cr%TYPE,
+        p_nume_tip_produs IN tip_produs.nume_tip_produs%TYPE,
+        p_car_p IN produse.car_p%TYPE,
+        p_nume_firma IN nume_producator.nume_firma%TYPE,
+        p_nume_stare IN stare_produs.nume_stare%TYPE,
         p_cantitate_disponibila IN magazie.cantitate_disponibila%TYPE,
         p_pret                  IN magazie.pret%TYPE
     ) IS
+    p_produse_id_p_cr magazie.produse_id_p_cr%TYPE;
+    p_tip_produs_id_produs produse.tip_produs_id_produs%TYPE;
+    p_nume_producator_id_firma produse.nume_producator_id_firma%TYPE;
+    p_stare_produs_id_stare produse.stare_produs_id_stare%TYPE;
     BEGIN
+        SELECT id_produs INTO p_tip_produs_id_produs from tip_produs where nume_tip_produs like p_nume_tip_produs;
+        SELECT id_firma INTO p_nume_producator_id_firma from nume_producator where nume_firma like p_nume_firma;
+        SELECT id_stare INTO p_stare_produs_id_stare from stare_produs where nume_stare like p_nume_stare;
+        SELECT id_p_cr INTO p_produse_id_p_cr FROM produse WHERE tip_produs_id_produs=p_tip_produs_id_produs and car_p=p_car_p and nume_producator_id_firma=p_nume_producator_id_firma and stare_produs_id_stare=p_stare_produs_id_stare;
         UPDATE magazie
         SET cantitate_disponibila = p_cantitate_disponibila,
             pret = p_pret
@@ -54,19 +88,41 @@ CREATE OR REPLACE PACKAGE BODY magazie_pkg AS
     END update_magazie;
 
     PROCEDURE delete_magazie(
-        p_produse_id_p_cr IN magazie.produse_id_p_cr%TYPE
+        p_nume_tip_produs IN tip_produs.nume_tip_produs%TYPE,
+        p_car_p IN produse.car_p%TYPE,
+        p_nume_firma IN nume_producator.nume_firma%TYPE,
+        p_nume_stare IN stare_produs.nume_stare%TYPE
     ) IS
+    p_produse_id_p_cr magazie.produse_id_p_cr%TYPE;
+    p_tip_produs_id_produs produse.tip_produs_id_produs%TYPE;
+    p_nume_producator_id_firma produse.nume_producator_id_firma%TYPE;
+    p_stare_produs_id_stare produse.stare_produs_id_stare%TYPE;
     BEGIN
+        SELECT id_produs INTO p_tip_produs_id_produs from tip_produs where nume_tip_produs like p_nume_tip_produs;
+        SELECT id_firma INTO p_nume_producator_id_firma from nume_producator where nume_firma like p_nume_firma;
+        SELECT id_stare INTO p_stare_produs_id_stare from stare_produs where nume_stare like p_nume_stare;
+        SELECT id_p_cr INTO p_produse_id_p_cr FROM produse WHERE tip_produs_id_produs=p_tip_produs_id_produs and car_p=p_car_p and nume_producator_id_firma=p_nume_producator_id_firma and stare_produs_id_stare=p_stare_produs_id_stare;
         DELETE FROM magazie
         WHERE produse_id_p_cr = p_produse_id_p_cr;
         COMMIT;
     END delete_magazie;
 
     FUNCTION get_magazie(
-        p_produse_id_p_cr IN magazie.produse_id_p_cr%TYPE
+        p_nume_tip_produs IN tip_produs.nume_tip_produs%TYPE,
+        p_car_p IN produse.car_p%TYPE,
+        p_nume_firma IN nume_producator.nume_firma%TYPE,
+        p_nume_stare IN stare_produs.nume_stare%TYPE
     ) RETURN SYS_REFCURSOR IS
         v_cursor SYS_REFCURSOR;
+        p_produse_id_p_cr magazie.produse_id_p_cr%TYPE;
+        p_tip_produs_id_produs produse.tip_produs_id_produs%TYPE;
+        p_nume_producator_id_firma produse.nume_producator_id_firma%TYPE;
+        p_stare_produs_id_stare produse.stare_produs_id_stare%TYPE;
     BEGIN
+        SELECT id_produs INTO p_tip_produs_id_produs from tip_produs where nume_tip_produs like p_nume_tip_produs;
+        SELECT id_firma INTO p_nume_producator_id_firma from nume_producator where nume_firma like p_nume_firma;
+        SELECT id_stare INTO p_stare_produs_id_stare from stare_produs where nume_stare like p_nume_stare;
+        SELECT id_p_cr INTO p_produse_id_p_cr FROM produse WHERE tip_produs_id_produs=p_tip_produs_id_produs and car_p=p_car_p and nume_producator_id_firma=p_nume_producator_id_firma and stare_produs_id_stare=p_stare_produs_id_stare;
         OPEN v_cursor FOR
         SELECT *
         FROM magazie

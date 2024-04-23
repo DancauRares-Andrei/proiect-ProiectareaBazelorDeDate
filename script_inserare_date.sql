@@ -20,4 +20,13 @@ EXECUTE produse_pkg.inserare_produs('Bobina','Inductanta','Samsung','Zgariat');
 EXECUTE produse_pkg.inserare_produs('Rezistenta','Rezistenta','Texas Instruments','Defect');
 EXECUTE produse_pkg.inserare_produs('Dioda','Va','Qualcomm','Expirat');
 EXECUTE produse_pkg.inserare_produs('Condensator','Capacitate','Intel','Nou');
-EXECUTE produse_pkg.stergere_produs('Condensator','Capacitate','CapXon','Nou');--De adaugat trigger pentru a verifica unicitatea
+EXECUTE magazie_pkg.insert_magazie('Condensator','Capacitate','CapXon','Nou',200,40);
+EXECUTE magazie_pkg.insert_magazie('TranzistorMOS','VDS','Intel','Folosit',10,50);
+EXECUTE magazie_pkg.insert_magazie('Bobina','Inductanta','Samsung','Zgariat',45,50);
+EXECUTE magazie_pkg.insert_magazie('Rezistenta','Rezistenta','Texas Instruments','Defect',60,10);
+EXECUTE magazie_pkg.insert_magazie('Dioda','Va','Qualcomm','Expirat',30,60);
+EXECUTE vanzari_pkg.inserare_vanzare('Condensator','Capacitate','CapXon','Nou',100,'04-APR-22');
+EXECUTE vanzari_pkg.inserare_vanzare('TranzistorMOS','VDS','Intel','Folosit',1,'03-APR-22');
+EXECUTE vanzari_pkg.inserare_vanzare('Bobina','Inductanta','Samsung','Zgariat',10,'05-APR-22');
+EXECUTE vanzari_pkg.inserare_vanzare('Rezistenta','Rezistenta','Texas Instruments','Defect',25,'07-APR-22');
+EXECUTE vanzari_pkg.inserare_vanzare('Dioda','Va','Qualcomm','Expirat',20,'08-APR-22');

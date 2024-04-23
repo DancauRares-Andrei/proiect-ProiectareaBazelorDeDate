@@ -5,59 +5,129 @@
 <ownerDesignName>RaresElectronics</ownerDesignName>
 <source>CREATE OR REPLACE PACKAGE vanzari_pkg AS
     PROCEDURE inserare_vanzare(
-        p_produse_id_p_cr IN vanzari.produse_id_p_cr%TYPE, 
+        p_nume_tip_produs IN tip_produs.nume_tip_produs%TYPE,
+        p_car_p IN produse.car_p%TYPE,
+        p_nume_firma IN nume_producator.nume_firma%TYPE,
+        p_nume_stare IN stare_produs.nume_stare%TYPE, 
         p_cantitate_dorita IN vanzari.cantitate_dorita%TYPE,
         p_data IN vanzari.data%TYPE
     );
     
     PROCEDURE actualizare_vanzare(
-        p_produse_id_p_cr IN vanzari.produse_id_p_cr%TYPE, 
+        p_nume_tip_produs IN tip_produs.nume_tip_produs%TYPE,
+        p_car_p IN produse.car_p%TYPE,
+        p_nume_firma IN nume_producator.nume_firma%TYPE,
+        p_nume_stare IN stare_produs.nume_stare%TYPE, 
         p_cantitate_dorita IN vanzari.cantitate_dorita%TYPE,
-        p_data IN vanzari.data%TYPE
+        p_data IN vanzari.data%TYPE,
+        p_cantitate_dorita_noua IN vanzari.cantitate_dorita%TYPE,
+        p_data_noua IN vanzari.data%TYPE
     );
     
-    PROCEDURE stergere_vanzare(p_produse_id_p_cr IN vanzari.produse_id_p_cr%TYPE);
+    PROCEDURE stergere_vanzare(p_nume_tip_produs IN tip_produs.nume_tip_produs%TYPE,
+        p_car_p IN produse.car_p%TYPE,
+        p_nume_firma IN nume_producator.nume_firma%TYPE,
+        p_nume_stare IN stare_produs.nume_stare%TYPE,
+        p_cantitate_dorita IN vanzari.cantitate_dorita%TYPE,
+        p_data IN vanzari.data%TYPE
+        );
     
-    FUNCTION selectare_vanzare(p_produse_id_p_cr IN vanzari.produse_id_p_cr%TYPE) RETURN vanzari%ROWTYPE;
+    FUNCTION selectare_vanzare(p_nume_tip_produs IN tip_produs.nume_tip_produs%TYPE,
+        p_car_p IN produse.car_p%TYPE,
+        p_nume_firma IN nume_producator.nume_firma%TYPE,
+        p_nume_stare IN stare_produs.nume_stare%TYPE,
+        p_cantitate_dorita IN vanzari.cantitate_dorita%TYPE,
+        p_data IN vanzari.data%TYPE) RETURN vanzari%ROWTYPE;
     
     FUNCTION selectare_toate_vanzarile RETURN SYS_REFCURSOR;
 END vanzari_pkg;
 /
 CREATE OR REPLACE PACKAGE BODY vanzari_pkg AS
     PROCEDURE inserare_vanzare(
-        p_produse_id_p_cr IN vanzari.produse_id_p_cr%TYPE, 
+        p_nume_tip_produs IN tip_produs.nume_tip_produs%TYPE,
+        p_car_p IN produse.car_p%TYPE,
+        p_nume_firma IN nume_producator.nume_firma%TYPE,
+        p_nume_stare IN stare_produs.nume_stare%TYPE,  
         p_cantitate_dorita IN vanzari.cantitate_dorita%TYPE,
         p_data IN vanzari.data%TYPE
-    ) AS
+    ) IS
+    p_tip_produs_id_produs produse.tip_produs_id_produs%TYPE;
+    p_nume_producator_id_firma produse.nume_producator_id_firma%TYPE;
+    p_stare_produs_id_stare produse.stare_produs_id_stare%TYPE;
+    p_produse_id_p_cr magazie.produse_id_p_cr%TYPE;
     BEGIN
+        SELECT id_produs INTO p_tip_produs_id_produs from tip_produs where nume_tip_produs like p_nume_tip_produs;
+        SELECT id_firma INTO p_nume_producator_id_firma from nume_producator where nume_firma like p_nume_firma;
+        SELECT id_stare INTO p_stare_produs_id_stare from stare_produs where nume_stare like p_nume_stare;
+        SELECT id_p_cr INTO p_produse_id_p_cr FROM produse WHERE tip_produs_id_produs=p_tip_produs_id_produs and car_p=p_car_p and nume_producator_id_firma=p_nume_producator_id_firma and stare_produs_id_stare=p_stare_produs_id_stare;
         INSERT INTO vanzari (produse_id_p_cr, cantitate_dorita, data) 
         VALUES (p_produse_id_p_cr, p_cantitate_dorita, p_data);
         COMMIT;
     END inserare_vanzare;
     
     PROCEDURE actualizare_vanzare(
-        p_produse_id_p_cr IN vanzari.produse_id_p_cr%TYPE, 
+        p_nume_tip_produs IN tip_produs.nume_tip_produs%TYPE,
+        p_car_p IN produse.car_p%TYPE,
+        p_nume_firma IN nume_producator.nume_firma%TYPE,
+        p_nume_stare IN stare_produs.nume_stare%TYPE,  
         p_cantitate_dorita IN vanzari.cantitate_dorita%TYPE,
-        p_data IN vanzari.data%TYPE
-    ) AS
+        p_data IN vanzari.data%TYPE,
+        p_cantitate_dorita_noua IN vanzari.cantitate_dorita%TYPE,
+        p_data_noua IN vanzari.data%TYPE
+    ) IS
+    p_tip_produs_id_produs produse.tip_produs_id_produs%TYPE;
+    p_nume_producator_id_firma produse.nume_producator_id_firma%TYPE;
+    p_stare_produs_id_stare produse.stare_produs_id_stare%TYPE;
+    p_produse_id_p_cr magazie.produse_id_p_cr%TYPE;
     BEGIN
+        SELECT id_produs INTO p_tip_produs_id_produs from tip_produs where nume_tip_produs like p_nume_tip_produs;
+        SELECT id_firma INTO p_nume_producator_id_firma from nume_producator where nume_firma like p_nume_firma;
+        SELECT id_stare INTO p_stare_produs_id_stare from stare_produs where nume_stare like p_nume_stare;
+        SELECT id_p_cr INTO p_produse_id_p_cr FROM produse WHERE tip_produs_id_produs=p_tip_produs_id_produs and car_p=p_car_p and nume_producator_id_firma=p_nume_producator_id_firma and stare_produs_id_stare=p_stare_produs_id_stare;
         UPDATE vanzari 
-        SET cantitate_dorita = p_cantitate_dorita,
-            data = p_data
-        WHERE produse_id_p_cr = p_produse_id_p_cr;
+        SET cantitate_dorita = p_cantitate_dorita_noua,
+            data = p_data_noua
+        WHERE produse_id_p_cr = p_produse_id_p_cr and cantitate_dorita=p_cantitate_dorita and data=p_data;
         COMMIT;
     END actualizare_vanzare;
     
-    PROCEDURE stergere_vanzare(p_produse_id_p_cr IN vanzari.produse_id_p_cr%TYPE) AS
+    PROCEDURE stergere_vanzare(p_nume_tip_produs IN tip_produs.nume_tip_produs%TYPE,
+        p_car_p IN produse.car_p%TYPE,
+        p_nume_firma IN nume_producator.nume_firma%TYPE,
+        p_nume_stare IN stare_produs.nume_stare%TYPE,
+        p_cantitate_dorita IN vanzari.cantitate_dorita%TYPE,
+        p_data IN vanzari.data%TYPE
+        ) IS
+        p_tip_produs_id_produs produse.tip_produs_id_produs%TYPE;
+        p_nume_producator_id_firma produse.nume_producator_id_firma%TYPE;
+        p_stare_produs_id_stare produse.stare_produs_id_stare%TYPE;
+        p_produse_id_p_cr magazie.produse_id_p_cr%TYPE;
     BEGIN
-        DELETE FROM vanzari WHERE produse_id_p_cr = p_produse_id_p_cr;
+        SELECT id_produs INTO p_tip_produs_id_produs from tip_produs where nume_tip_produs like p_nume_tip_produs;
+        SELECT id_firma INTO p_nume_producator_id_firma from nume_producator where nume_firma like p_nume_firma;
+        SELECT id_stare INTO p_stare_produs_id_stare from stare_produs where nume_stare like p_nume_stare;
+        SELECT id_p_cr INTO p_produse_id_p_cr FROM produse WHERE tip_produs_id_produs=p_tip_produs_id_produs and car_p=p_car_p and nume_producator_id_firma=p_nume_producator_id_firma and stare_produs_id_stare=p_stare_produs_id_stare;
+        DELETE FROM vanzari WHERE produse_id_p_cr = p_produse_id_p_cr and cantitate_dorita=p_cantitate_dorita and data=p_data;
         COMMIT;
     END stergere_vanzare;
     
-    FUNCTION selectare_vanzare(p_produse_id_p_cr IN vanzari.produse_id_p_cr%TYPE) RETURN vanzari%ROWTYPE AS
+    FUNCTION selectare_vanzare(p_nume_tip_produs IN tip_produs.nume_tip_produs%TYPE,
+        p_car_p IN produse.car_p%TYPE,
+        p_nume_firma IN nume_producator.nume_firma%TYPE,
+        p_nume_stare IN stare_produs.nume_stare%TYPE,
+        p_cantitate_dorita IN vanzari.cantitate_dorita%TYPE,
+        p_data IN vanzari.data%TYPE) RETURN vanzari%ROWTYPE AS
+        p_tip_produs_id_produs produse.tip_produs_id_produs%TYPE;
+        p_nume_producator_id_firma produse.nume_producator_id_firma%TYPE;
+        p_stare_produs_id_stare produse.stare_produs_id_stare%TYPE;
+        p_produse_id_p_cr magazie.produse_id_p_cr%TYPE;
         v_vanzare vanzari%ROWTYPE;
     BEGIN
-        SELECT * INTO v_vanzare FROM vanzari WHERE produse_id_p_cr = p_produse_id_p_cr;
+        SELECT id_produs INTO p_tip_produs_id_produs from tip_produs where nume_tip_produs like p_nume_tip_produs;
+        SELECT id_firma INTO p_nume_producator_id_firma from nume_producator where nume_firma like p_nume_firma;
+        SELECT id_stare INTO p_stare_produs_id_stare from stare_produs where nume_stare like p_nume_stare;
+        SELECT id_p_cr INTO p_produse_id_p_cr FROM produse WHERE tip_produs_id_produs=p_tip_produs_id_produs and car_p=p_car_p and nume_producator_id_firma=p_nume_producator_id_firma and stare_produs_id_stare=p_stare_produs_id_stare;
+        SELECT * INTO v_vanzare FROM vanzari WHERE produse_id_p_cr = p_produse_id_p_cr and cantitate_dorita=p_cantitate_dorita and data=p_data;
         RETURN v_vanzare;
     END selectare_vanzare;
     

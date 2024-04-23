@@ -1,0 +1,23 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TriggerOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.TriggerOraclev10g" name="trg_unic_vanzare_insert" directorySegmentName="seg_0" id="BCD30F16-8E5A-40B1-7B2B-E55B184488D4">
+<createdBy>rares</createdBy>
+<createdTime>2024-04-23 11:03:09 UTC</createdTime>
+<ownerDesignName>RaresElectronics</ownerDesignName>
+<actions>INSERT</actions>
+<body><![CDATA[DECLARE
+    v_count NUMBER;
+BEGIN
+    SELECT COUNT(*)
+    INTO v_count
+    FROM vanzari
+    WHERE produse_id_p_cr = :NEW.produse_id_p_cr
+    AND data = :NEW.data
+    AND cantitate_dorita = :NEW.cantitate_dorita;
+
+    IF v_count > 0 THEN
+        raise_application_error(-20001, 'Vanzare duplicata.');
+    END IF;
+END;]]></body>
+<triggerTime>BEFORE</triggerTime>
+<table>2D83CB17-84B7-9919-36EA-186D46B08297</table>
+</TriggerOraclev10g>
