@@ -1,0 +1,25 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TriggerOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.TriggerOraclev10g" name="trg_produse_duplicate_update" directorySegmentName="seg_0" id="C7F027CB-5A24-D184-6200-4D491F30AF67">
+<createdBy>rares</createdBy>
+<createdTime>2024-04-23 09:42:44 UTC</createdTime>
+<ownerDesignName>RaresElectronics</ownerDesignName>
+<actions>UPDATE</actions>
+<body><![CDATA[DECLARE
+    v_count NUMBER;
+BEGIN
+    SELECT COUNT(*)
+    INTO v_count
+    FROM produse
+    WHERE tip_produs_id_produs = :NEW.tip_produs_id_produs
+    AND car_p = :NEW.car_p
+    AND nume_producator_id_firma = :NEW.nume_producator_id_firma
+    AND stare_produs_id_stare = :NEW.stare_produs_id_stare
+    AND id_p_cr != :NEW.id_p_cr; 
+    
+    IF v_count > 0 THEN
+        raise_application_error(-20001, 'Produs duplicat.');
+    END IF;
+END;]]></body>
+<triggerTime>BEFORE</triggerTime>
+<table>823E1F9D-83B8-0C59-F7DD-83CAA30D966A</table>
+</TriggerOraclev10g>
