@@ -29,7 +29,7 @@ BEGIN
         raise_application_error(-20001, 'Stoc insuficient produs.');
     ELSE
         UPDATE magazie
-        SET cantitate_disponibila = v_stoc_magazie - :NEW.cantitate_dorita
+        SET cantitate_disponibila = v_stoc_magazie - :NEW.cantitate_dorita + :OLD.cantitate_dorita
         WHERE produse_id_p_cr = :NEW.produse_id_p_cr;
     END IF;
 END;]]></body>

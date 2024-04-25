@@ -58,7 +58,7 @@ CREATE OR REPLACE PACKAGE BODY produse_pkg AS
         COMMIT;
     END inserare_produs;
     
-    PROCEDURE actualizare_produs(--De verificat
+    PROCEDURE actualizare_produs(
         p_nume_tip_produs IN tip_produs.nume_tip_produs%TYPE,
         p_car_p IN produse.car_p%TYPE,
         p_nume_firma IN nume_producator.nume_firma%TYPE,
@@ -123,7 +123,7 @@ CREATE OR REPLACE PACKAGE BODY produse_pkg AS
         SELECT id_produs INTO p_tip_produs_id_produs from tip_produs where nume_tip_produs like p_nume_tip_produs;
         SELECT id_firma INTO p_nume_producator_id_firma from nume_producator where nume_firma like p_nume_firma;
         SELECT id_stare INTO p_stare_produs_id_stare from stare_produs where nume_stare like p_nume_stare;
-        SELECT * INTO v_produs FROM produse WHERE WHERE tip_produs_id_produs=p_tip_produs_id_produs and car_p=p_car_p and nume_producator_id_firma=p_nume_producator_id_firma and stare_produs_id_stare=p_stare_produs_id_stare;
+        SELECT * INTO v_produs FROM produse WHERE tip_produs_id_produs=p_tip_produs_id_produs and car_p=p_car_p and nume_producator_id_firma=p_nume_producator_id_firma and stare_produs_id_stare=p_stare_produs_id_stare;
         RETURN v_produs;
     END selectare_produs;
     
@@ -134,4 +134,13 @@ CREATE OR REPLACE PACKAGE BODY produse_pkg AS
         RETURN v_cursor;
     END selectare_toate_produsele;
 END produse_pkg;</source>
+<body class="oracle.dbtools.crest.model.design.storage.oracle.PackageBodyOracle" name="produse_pkg" id="CF59239B-986E-6987-CE15-3DBB3822BFEC">
+<createdBy>rares</createdBy>
+<createdTime>2024-04-24 11:55:06 UTC</createdTime>
+<ownerDesignName>RaresElectronics</ownerDesignName>
+<source>CREATE OR REPLACE PACKAGE BODY produse_pkg AS 
+BEGIN
+ NULL;
+END;</source>
+</body>
 </PackageOracle>
