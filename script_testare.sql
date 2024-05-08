@@ -53,6 +53,49 @@ EXECUTE tip_produs_pkg.stergere_tip_produs('GPUB');
 EXECUTE nume_producator_pkg.stergere_producator('AMDB');
 EXECUTE tranzactie('GPUB','AMDB','Placa video',300,1000);
 
+CREATE OR REPLACE PROCEDURE tranzactie2(
+    p_nume_tip_produs IN tip_produs.nume_tip_produs%TYPE,
+    p_nume_firma IN nume_producator.nume_firma%TYPE,
+    p_nume_stare in stare_produs.nume_stare%TYPE,
+    p_car_p IN produse.car_p%TYPE,
+    p_cantitate_disponibila IN magazie.cantitate_disponibila%TYPE,
+    p_pret IN magazie.pret%TYPE,
+    p_cantitate_dorita IN vanzari.cantitate_dorita%TYPE,
+    p_data IN vanzari.data%TYPE
+) AS
+p_tip_produs_id_produs produse.tip_produs_id_produs%TYPE;
+p_nume_producator_id_firma produse.nume_producator_id_firma%TYPE;
+p_stare_produs_id_stare produse.stare_produs_id_stare%TYPE;
+p_produse_id_p_cr magazie.produse_id_p_cr%TYPE;
+BEGIN
+    BEGIN
+        SELECT id_produs INTO p_tip_produs_id_produs from tip_produs where nume_tip_produs like p_nume_tip_produs;
+        SELECT id_firma INTO p_nume_producator_id_firma from nume_producator where nume_firma like p_nume_firma;
+        SELECT id_stare INTO p_stare_produs_id_stare from stare_produs where nume_stare like p_nume_stare;
+        
+        INSERT INTO produse (tip_produs_id_produs,car_p,nume_producator_id_firma,stare_produs_id_stare)
+        VALUES (p_tip_produs_id_produs, p_car_p, p_nume_producator_id_firma, p_stare_produs_id_stare);
+
+        SELECT id_p_cr INTO p_produse_id_p_cr FROM produse WHERE tip_produs_id_produs=p_tip_produs_id_produs and car_p=p_car_p and nume_producator_id_firma=p_nume_producator_id_firma and stare_produs_id_stare=p_stare_produs_id_stare;
+        INSERT INTO magazie (produse_id_p_cr, cantitate_disponibila, pret)
+        VALUES (p_produse_id_p_cr, p_cantitate_disponibila, p_pret);
+        
+        INSERT INTO vanzari (produse_id_p_cr, cantitate_dorita, data) 
+        VALUES (p_produse_id_p_cr, p_cantitate_dorita, p_data);
+        COMMIT;
+    EXCEPTION
+        WHEN OTHERS THEN
+            ROLLBACK;
+            raise_application_error(-20001, 'A aparut o eroare. Tranzactia a fost anulata. '||SQLERRM);
+    END;
+END;
+/
+--Caz obisnuit de testare
+EXECUTE tranzactie2('Dioda','Intel','Expirat','Va',200,50,100,'25-OCT-22');
+--Daca se mai executa inca o data, nu va reusi tranzactia pentru ca produsul deja exista
+EXECUTE tranzactie2('Dioda','Intel','Expirat','Va',200,50,100,'25-OCT-22');
+--Daca se incearca vanzarea unui produs cu un numar mai mare de bucati decat exista in magazie, va aparea o eroare de stoc insuficient
+EXECUTE tranzactie2('Dioda','Intel','Expirat','V1a',100,50,200,'25-OCT-22');
 
 --SQL Injection
 CREATE OR REPLACE PROCEDURE selectare_tip_produs_vulnerabil(p_nume_tip_produs VARCHAR2) AS
