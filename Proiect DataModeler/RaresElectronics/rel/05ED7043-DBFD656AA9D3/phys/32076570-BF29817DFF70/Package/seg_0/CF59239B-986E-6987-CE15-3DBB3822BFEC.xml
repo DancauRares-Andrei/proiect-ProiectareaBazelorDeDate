@@ -134,13 +134,4 @@ CREATE OR REPLACE PACKAGE BODY produse_pkg AS
         RETURN v_cursor;
     END selectare_toate_produsele;
 END produse_pkg;</source>
-<body class="oracle.dbtools.crest.model.design.storage.oracle.PackageBodyOracle" name="produse_pkg" id="CF59239B-986E-6987-CE15-3DBB3822BFEC">
-<createdBy>rares</createdBy>
-<createdTime>2024-04-24 11:55:06 UTC</createdTime>
-<ownerDesignName>RaresElectronics</ownerDesignName>
-<source>CREATE OR REPLACE PACKAGE BODY produse_pkg AS 
-BEGIN
- NULL;
-END;</source>
-</body>
 </PackageOracle>

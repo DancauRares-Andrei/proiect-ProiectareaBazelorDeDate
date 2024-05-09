@@ -128,6 +128,7 @@ emp_cursor SYS_REFCURSOR;
         CLOSE emp_cursor;
         dbms_output.put_line(v_id_produs||' '||v_nume_tip_produs);
 END selectare_tip_produs_securizat;
+/
 --Caz obisnuit
 EXECUTE selectare_tip_produs_securizat('Condensator');
 --Testare caz anterior vulnerabil
